@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, useRoute } from "wouter";
+import { Link, useLocation, useRoute } from "wouter";
 import {
   ArrowLeft,
   ArrowRight,
@@ -21,11 +21,43 @@ import NotFound from "./NotFound";
 
 export function ServiceDetailPage() {
   const [, params] = useRoute("/services/:slug");
+  const [, setLocation] = useLocation();
   const slug = params?.slug;
   const service = slug ? getServiceBySlug(slug) : undefined;
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+
+  // Handle Mobile Menu toggle with history popstate so mobile back button closes menu first
+  const handleOpenMenu = () => {
+    window.history.pushState({ modal: "menu" }, "");
+    setMenuOpen(true);
+  };
+
+  const handleCloseMenu = () => {
+    if (window.history.state?.modal === "menu") {
+      window.history.back();
+    }
+    setMenuOpen(false);
+  };
+
+  const handleStepBack = (e?: React.MouseEvent) => {
+    if (e) e.preventDefault();
+    if (window.history.length > 1) {
+      window.history.back();
+    } else {
+      setLocation("/#services");
+    }
+  };
+
+  useEffect(() => {
+    const onPopState = () => {
+      // If mobile menu was open, back button simply closes it (1 step back)
+      setMenuOpen(false);
+    };
+    window.addEventListener("popstate", onPopState);
+    return () => window.removeEventListener("popstate", onPopState);
+  }, []);
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -94,7 +126,7 @@ export function ServiceDetailPage() {
           </div>
           <button
             className="menu-toggle"
-            onClick={() => setMenuOpen((v) => !v)}
+            onClick={() => (menuOpen ? handleCloseMenu() : handleOpenMenu())}
             aria-label={menuOpen ? "Close menu" : "Open menu"}
             aria-expanded={menuOpen}
           >
@@ -103,25 +135,25 @@ export function ServiceDetailPage() {
         </div>
         {menuOpen && (
           <div className="mobile-nav">
-            <Link href="/#about" onClick={() => setMenuOpen(false)}>
+            <Link href="/#about" onClick={handleCloseMenu}>
               About <ArrowUpRight size={15} />
             </Link>
-            <Link href="/#services" onClick={() => setMenuOpen(false)}>
+            <Link href="/#services" onClick={handleCloseMenu}>
               Services <ArrowUpRight size={15} />
             </Link>
-            <Link href="/#facilities" onClick={() => setMenuOpen(false)}>
+            <Link href="/#facilities" onClick={handleCloseMenu}>
               Facilities <ArrowUpRight size={15} />
             </Link>
-            <Link href="/#team" onClick={() => setMenuOpen(false)}>
+            <Link href="/#team" onClick={handleCloseMenu}>
               Team <ArrowUpRight size={15} />
             </Link>
-            <Link href="/#contact" onClick={() => setMenuOpen(false)}>
+            <Link href="/#contact" onClick={handleCloseMenu}>
               Contact <ArrowUpRight size={15} />
             </Link>
             <Link
               href="/#clinics"
               className="button button--teal nav-cta-clinics"
-              onClick={() => setMenuOpen(false)}
+              onClick={handleCloseMenu}
             >
               OUR CLINICS <ArrowRight size={15} />
             </Link>
@@ -172,10 +204,15 @@ export function ServiceDetailPage() {
                   <ArrowRight size={17} />
                 </Link>
 
-                <Link href="/#services" className="service-hero-back-link">
+                <button
+                  type="button"
+                  onClick={handleStepBack}
+                  className="service-hero-back-link"
+                  style={{ cursor: "pointer", background: "rgba(255, 255, 255, 0.85)" }}
+                >
                   <ArrowLeft size={16} />
                   <span>Back to All Services</span>
-                </Link>
+                </button>
               </div>
 
               <div className="service-hero-badge-strip">

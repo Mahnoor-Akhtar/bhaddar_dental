@@ -207,6 +207,28 @@ export default function Home() {
   const [activeHero, setActiveHero] = useState(0);
   const [scrolled, setScrolled] = useState(false);
 
+  // Handle Mobile Menu toggle with history popstate so mobile back button closes menu first
+  const handleOpenMenu = () => {
+    window.history.pushState({ modal: "menu" }, "");
+    setMenuOpen(true);
+  };
+
+  const handleCloseMenu = () => {
+    if (window.history.state?.modal === "menu") {
+      window.history.back();
+    }
+    setMenuOpen(false);
+  };
+
+  useEffect(() => {
+    const onPopState = () => {
+      // If mobile menu was open, back button simply closes it (1 step back)
+      setMenuOpen(false);
+    };
+    window.addEventListener("popstate", onPopState);
+    return () => window.removeEventListener("popstate", onPopState);
+  }, []);
+
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 18);
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -260,16 +282,21 @@ export default function Home() {
               OUR CLINICS <ArrowRight size={14} className="nav-cta-arrow" />
             </a>
           </div>
-          <button className="menu-toggle" onClick={() => setMenuOpen((value) => !value)} aria-label={menuOpen ? "Close menu" : "Open menu"} aria-expanded={menuOpen}>
+          <button
+            className="menu-toggle"
+            onClick={() => (menuOpen ? handleCloseMenu() : handleOpenMenu())}
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={menuOpen}
+          >
             {menuOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
         </div>
         {menuOpen && (
           <div className="mobile-nav">
             {navItems.map((item) => (
-              <a key={item.href} href={item.href} onClick={() => setMenuOpen(false)}>{item.label}<ArrowUpRight size={15} /></a>
+              <a key={item.href} href={item.href} onClick={handleCloseMenu}>{item.label}<ArrowUpRight size={15} /></a>
             ))}
-            <a className="button button--teal nav-cta-clinics" href="#clinics" onClick={() => setMenuOpen(false)}>
+            <a className="button button--teal nav-cta-clinics" href="#clinics" onClick={handleCloseMenu}>
               OUR CLINICS <ArrowRight size={15} />
             </a>
           </div>
