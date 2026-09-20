@@ -1,33 +1,14 @@
-import React, { useState } from "react";
-import { Link } from "wouter";
+import React from "react";
 import {
   ArrowRight,
-  ArrowUpRight,
   ChevronRight,
   Clock3,
   Mail,
   MapPin,
   Phone,
-  Send,
-  Sparkles,
 } from "lucide-react";
-import { toast } from "sonner";
 
 export function Footer() {
-  const [email, setEmail] = useState("");
-  const [subscribed, setSubscribed] = useState(false);
-
-  const handleSubscribe = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!email || !email.includes("@")) {
-      toast.error("Please enter a valid email address.");
-      return;
-    }
-    setSubscribed(true);
-    toast.success("Thank you for subscribing to Bhaddar Dental updates!");
-    setEmail("");
-  };
-
   return (
     <footer className="custom-footer" id="contact">
       {/* Background glow and ambient light elements */}
@@ -351,30 +332,6 @@ export function Footer() {
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-
-        {/* NEWSLETTER "STAY INFORMED" CARD (Image 1) */}
-        <div className="custom-footer__newsletter-wrap">
-          <div className="custom-footer__newsletter-card">
-            <div className="custom-footer__newsletter-left">
-              <div className="custom-footer__newsletter-icon">
-                <Mail size={22} />
-              </div>
-              <div className="custom-footer__newsletter-content">
-                <h3 className="custom-footer__newsletter-title">Stay Informed</h3>
-                <p className="custom-footer__newsletter-desc">
-                  Get updates about our services, oral health tips and more.
-                </p>
-              </div>
-            </div>
-
-            <form className="custom-footer__newsletter-form" onSubmit={handleSubscribe}>
-              <button type="submit" className="custom-footer__newsletter-btn">
-                <span>Subscribe</span>
-                <ArrowRight size={16} />
-              </button>
-            </form>
           </div>
         </div>
 
