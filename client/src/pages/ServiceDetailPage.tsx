@@ -17,6 +17,7 @@ import {
   X,
 } from "lucide-react";
 import { getServiceBySlug, servicesData } from "../data/servicesData";
+import { Footer } from "../components/Footer";
 import NotFound from "./NotFound";
 
 export function ServiceDetailPage() {
@@ -110,19 +111,19 @@ export function ServiceDetailPage() {
             </span>
           </Link>
           <nav className="desktop-nav" aria-label="Primary navigation">
-            <Link href="/#about">About</Link>
-            <Link href="/#services">Services</Link>
-            <Link href="/#facilities">Facilities</Link>
-            <Link href="/#team">Team</Link>
-            <Link href="/#contact">Contact</Link>
+            <a href="/#about">About</a>
+            <a href="/#services">Services</a>
+            <a href="/#facilities">Facilities</a>
+            <a href="/#team">Team</a>
+            <a href="/#contact">Contact</a>
           </nav>
           <div className="nav-actions">
-            <Link
+            <a
               href="/#clinics"
               className="button button--small button--teal nav-cta-clinics"
             >
               OUR CLINICS <ArrowRight size={14} className="nav-cta-arrow" />
-            </Link>
+            </a>
           </div>
           <button
             className="menu-toggle"
@@ -135,28 +136,28 @@ export function ServiceDetailPage() {
         </div>
         {menuOpen && (
           <div className="mobile-nav">
-            <Link href="/#about" onClick={handleCloseMenu}>
+            <a href="/#about" onClick={() => setMenuOpen(false)}>
               About <ArrowUpRight size={15} />
-            </Link>
-            <Link href="/#services" onClick={handleCloseMenu}>
+            </a>
+            <a href="/#services" onClick={() => setMenuOpen(false)}>
               Services <ArrowUpRight size={15} />
-            </Link>
-            <Link href="/#facilities" onClick={handleCloseMenu}>
+            </a>
+            <a href="/#facilities" onClick={() => setMenuOpen(false)}>
               Facilities <ArrowUpRight size={15} />
-            </Link>
-            <Link href="/#team" onClick={handleCloseMenu}>
+            </a>
+            <a href="/#team" onClick={() => setMenuOpen(false)}>
               Team <ArrowUpRight size={15} />
-            </Link>
-            <Link href="/#contact" onClick={handleCloseMenu}>
+            </a>
+            <a href="/#contact" onClick={() => setMenuOpen(false)}>
               Contact <ArrowUpRight size={15} />
-            </Link>
-            <Link
+            </a>
+            <a
               href="/#clinics"
               className="button button--teal nav-cta-clinics"
-              onClick={handleCloseMenu}
+              onClick={() => setMenuOpen(false)}
             >
               OUR CLINICS <ArrowRight size={15} />
-            </Link>
+            </a>
           </div>
         )}
       </header>
@@ -196,13 +197,13 @@ export function ServiceDetailPage() {
               </p>
 
               <div className="service-hero-actions">
-                <Link
+                <a
                   href="/#clinics"
                   className="button button--teal service-hero-btn"
                 >
                   <span>Our Clinics</span>
                   <ArrowRight size={17} />
-                </Link>
+                </a>
 
                 <button
                   type="button"
@@ -448,87 +449,20 @@ export function ServiceDetailPage() {
                 dental and maxillofacial care designed for your health and comfort.
               </p>
               <div className="service-final-cta-actions">
-                <Link
+                <a
                   href="/#clinics"
                   className="button button--teal service-final-cta-btn"
                 >
                   <span>Our Clinics</span>
                   <ArrowRight size={18} />
-                </Link>
+                </a>
               </div>
             </div>
           </div>
         </section>
       </main>
 
-      {/* Site Footer */}
-      <footer className="site-footer">
-        <div className="site-footer__glow" aria-hidden="true" />
-        <div className="container site-footer__grid">
-          <div className="site-footer__brand-column">
-            <Link href="/" className="brand brand--footer" aria-label="Bhaddar Dental OMFS home">
-              <img
-                src="/logo.png"
-                alt="Bhaddar Dental OMFS Logo"
-                className="brand__logo-img"
-              />
-              <span className="brand__wordmark">
-                Bhaddar <span>Dental</span>
-              </span>
-            </Link>
-            <p>Dentist &amp; Dental Office — Because Your Smile Matters!</p>
-            <div className="footer-socials">
-              <a href="mailto:contact@dentalcarebydrawais.com" aria-label="Email Dr. Awais">
-                <Mail size={17} />
-              </a>
-              <Link href="/#team" aria-label="Meet Dr. Awais &amp; team">
-                <Users size={17} />
-              </Link>
-            </div>
-          </div>
-          <div className="site-footer__column">
-            <span className="site-footer__label">Explore</span>
-            <Link href="/#about">About clinic <ArrowUpRight size={13} /></Link>
-            <Link href="/#services">Treatments <ArrowUpRight size={13} /></Link>
-            <Link href="/#facilities">Facilities <ArrowUpRight size={13} /></Link>
-            <Link href="/#team">Our experts <ArrowUpRight size={13} /></Link>
-            <Link href="/#clinics">Our Clinics <ArrowUpRight size={13} /></Link>
-          </div>
-          <div className="site-footer__column">
-            <span className="site-footer__label">Find us</span>
-            <span className="footer-detail">
-              <MapPin size={16} />
-              Circular Road, Near Butt Service Station
-              <br />
-              Chandni Chowk, Jalalpur Jattan 50700
-            </span>
-            <a className="footer-detail" href="mailto:contact@dentalcarebydrawais.com">
-              <Mail size={16} />
-              contact@dentalcarebydrawais.com
-            </a>
-          </div>
-          <div className="site-footer__column">
-            <span className="site-footer__label">Clinic hours</span>
-            <span className="footer-hours">
-              <b>Mon — Fri</b>
-              <span>09:00 — 20:00</span>
-            </span>
-            <span className="footer-hours">
-              <b>Saturday</b>
-              <span>10:00 — 16:00</span>
-            </span>
-            <span className="footer-hours footer-hours--muted">
-              <b>Sunday</b>
-              <span>By appointment</span>
-            </span>
-          </div>
-        </div>
-        <div className="container site-footer__bottom">
-          <span>© 2026 Bhaddar Dental OMFS. All rights reserved.</span>
-          <span>Dentist &amp; Dental Office</span>
-          <a href="#top">Back to top <ArrowUpRight size={13} /></a>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

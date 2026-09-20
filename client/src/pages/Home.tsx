@@ -35,6 +35,7 @@ import {
 } from "lucide-react";
 import { toast } from "sonner";
 import { AdditionalFacilities } from "../components/AdditionalFacilities";
+import { Footer } from "../components/Footer";
 import { OralMaxillofacialSection } from "../components/OralMaxillofacialSection";
 import { OurBranchesSection } from "../components/OurBranchesSection";
 import { servicesData } from "../data/servicesData";
@@ -164,13 +165,15 @@ function scrollToSection(href: string) {
 }
 
 function TeamCard({ doctor }: { doctor: TeamDoctor }) {
+  const isDrAwais = doctor.name.toLowerCase().includes("awais");
+
   return (
     <article className="team-card">
       <div className="team-card__image-container">
         <img
           src={doctor.image}
           alt={doctor.name}
-          className="team-card__img"
+          className={`team-card__img ${isDrAwais ? "team-card__img--top" : ""}`}
           loading="lazy"
         />
         <div className="team-card__wave" aria-hidden="true">
@@ -219,6 +222,24 @@ export default function Home() {
     }
     setMenuOpen(false);
   };
+
+  useEffect(() => {
+    const handleHashScroll = () => {
+      const hash = window.location.hash;
+      if (hash) {
+        setTimeout(() => {
+          const target = document.querySelector(hash);
+          if (target) {
+            target.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+        }, 120);
+      }
+    };
+
+    handleHashScroll();
+    window.addEventListener("hashchange", handleHashScroll);
+    return () => window.removeEventListener("hashchange", handleHashScroll);
+  }, []);
 
   useEffect(() => {
     const onPopState = () => {
@@ -294,9 +315,9 @@ export default function Home() {
         {menuOpen && (
           <div className="mobile-nav">
             {navItems.map((item) => (
-              <a key={item.href} href={item.href} onClick={handleCloseMenu}>{item.label}<ArrowUpRight size={15} /></a>
+              <a key={item.href} href={item.href} onClick={() => setMenuOpen(false)}>{item.label}<ArrowUpRight size={15} /></a>
             ))}
-            <a className="button button--teal nav-cta-clinics" href="#clinics" onClick={handleCloseMenu}>
+            <a className="button button--teal nav-cta-clinics" href="#clinics" onClick={() => setMenuOpen(false)}>
               OUR CLINICS <ArrowRight size={15} />
             </a>
           </div>
@@ -546,20 +567,7 @@ export default function Home() {
         <OurBranchesSection />
       </main>
 
-      <footer className="site-footer">
-        <div className="site-footer__glow" aria-hidden="true" />
-        <div className="container site-footer__cta">
-          <div><p className="eyebrow"><span className="eyebrow__rule" />Your next comfortable visit</p><h2>Transform Your Smile with <em>Expert Care 🦷</em></h2><p>Bhaddar Dental OMFS — Because Your Smile Matters! Tell us what you need and we’ll help you find the right next step.</p></div>
-          <a className="button button--teal footer__cta-button" href="#clinics">Our Clinics <ArrowRight size={17} /></a>
-        </div>
-        <div className="container site-footer__grid">
-          <div className="site-footer__brand-column"><a className="brand brand--footer" href="#top" aria-label="Bhaddar Dental OMFS home"><img src="/logo.png" alt="Bhaddar Dental OMFS Logo" className="brand__logo-img" /><span className="brand__wordmark">Bhaddar <span>Dental</span></span></a><p>Dentist & Dental Office — Because Your Smile Matters!</p><div className="footer-socials"><a href="mailto:contact@dentalcarebydrawais.com" aria-label="Email Dr. Awais"><Mail size={17} /></a><a href="#team" aria-label="Meet Dr. Awais & team"><Users size={17} /></a></div></div>
-          <div className="site-footer__column"><span className="site-footer__label">Explore</span><a href="#about">About clinic <ArrowUpRight size={13} /></a><a href="#services">Treatments <ArrowUpRight size={13} /></a><a href="#facilities">Facilities <ArrowUpRight size={13} /></a><a href="#team">Our experts <ArrowUpRight size={13} /></a><a href="#clinics">Our Clinics <ArrowUpRight size={13} /></a></div>
-          <div className="site-footer__column"><span className="site-footer__label">Find us</span><span className="footer-detail"><MapPin size={16} />Circular Road, Near Butt Service Station<br />Chandni Chowk, Jalalpur Jattan 50700</span><a className="footer-detail" href="mailto:contact@dentalcarebydrawais.com"><Mail size={16} />contact@dentalcarebydrawais.com</a></div>
-          <div className="site-footer__column"><span className="site-footer__label">Clinic hours</span><span className="footer-hours"><b>Mon — Fri</b><span>09:00 — 20:00</span></span><span className="footer-hours"><b>Saturday</b><span>10:00 — 16:00</span></span><span className="footer-hours footer-hours--muted"><b>Sunday</b><span>By appointment</span></span></div>
-        </div>
-        <div className="container site-footer__bottom"><span>© 2026 Bhaddar Dental OMFS. All rights reserved.</span><span>Dentist & Dental Office</span><a href="#top">Back to top <ArrowUpRight size={13} /></a></div>
-      </footer>
+      <Footer />
     </div>
   );
 }
