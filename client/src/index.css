@@ -1075,7 +1075,14 @@ h1 em, h2 em, h3 em { color: #0E6148; font-style: italic; }
 
 .custom-footer__col--ref-brand { display: flex; flex-direction: column; gap: 16px; }
 .custom-footer__brand-header { display: inline-flex; align-items: center; gap: 14px; text-decoration: none; }
-.custom-footer__tooth-logo { flex-shrink: 0; }
+.custom-footer__brand-logo {
+  height: clamp(44px, 5vw, 56px);
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 12px rgba(0, 229, 255, 0.25));
+  display: block;
+  flex-shrink: 0;
+}
 .custom-footer__brand-title { font-size: clamp(24px, 2.6vw, 30px); font-weight: 800; letter-spacing: -0.02em; line-height: 1; }
 .custom-footer__brand-word-white { color: #FFFFFF; }
 .custom-footer__brand-word-cyan { color: #00E5FF; }

@@ -4,47 +4,6 @@ import {
   ChevronRight,
 } from "lucide-react";
 
-function ToothLogo({ size = 42 }: { size?: number }) {
-  return (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 100 100"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className="custom-footer__tooth-logo"
-    >
-      <defs>
-        <linearGradient id="tooth-sheen" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#FFFFFF" />
-          <stop offset="35%" stopColor="#E0F7FA" />
-          <stop offset="70%" stopColor="#00E5FF" />
-          <stop offset="100%" stopColor="#00838F" />
-        </linearGradient>
-        <linearGradient id="tooth-inner-glow" x1="100%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stopColor="#80DEEA" stopOpacity="0.9" />
-          <stop offset="100%" stopColor="#006064" stopOpacity="0.6" />
-        </linearGradient>
-        <filter id="logo-drop" x="-20%" y="-20%" width="140%" height="140%">
-          <feDropShadow dx="0" dy="3" stdDeviation="5" floodColor="#00E5FF" floodOpacity="0.45" />
-        </filter>
-      </defs>
-      {/* Outer contoured Tooth Silhouette */}
-      <path
-        d="M50 10 C36 10 20 18 14 31 C8 44 11 62 19 74 C24 81 32 84 37 74 C42 63 44 50 50 50 C56 50 58 63 63 74 C68 84 76 81 81 74 C89 62 92 44 86 31 C80 18 64 10 50 10 Z"
-        fill="url(#tooth-sheen)"
-        filter="url(#logo-drop)"
-      />
-      {/* 3D Depth Wave Inside Tooth */}
-      <path
-        d="M38 21 C45 15 55 15 62 21 C68 26 73 36 70 48 C66 60 58 70 54 74 C52 76 50 74 50 72 C50 62 53 49 50 44 C47 49 50 62 50 72 C50 74 48 76 46 74 C42 70 34 60 30 48 C27 36 32 26 38 21 Z"
-        fill="url(#tooth-inner-glow)"
-      />
-      <circle cx="34" cy="28" r="4" fill="#FFFFFF" opacity="0.8" />
-    </svg>
-  );
-}
-
 export function Footer() {
   return (
     <footer className="custom-footer" id="contact">
@@ -140,7 +99,7 @@ export function Footer() {
           {/* Left Column: Brand & Bio */}
           <div className="custom-footer__col custom-footer__col--ref-brand">
             <a href="/#top" className="custom-footer__brand-header" aria-label="Bhaddar Dental home">
-              <ToothLogo size={42} />
+              <img src="/logo.png" alt="Bhaddar Dental OMFS Logo" className="custom-footer__brand-logo" />
               <div className="custom-footer__brand-title">
                 <span className="custom-footer__brand-word-white">Bhaddar</span>{" "}
                 <span className="custom-footer__brand-word-cyan">Dental</span>
