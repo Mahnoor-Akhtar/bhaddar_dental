@@ -45,7 +45,7 @@ const generatedHero = "/main.png";
 const suppliedHero = "/main.png";
 const generatedMark = "/logo.png";
 const suppliedChair = "/Consultation & Counseling.png";
-const suppliedTreatment = "/oral-surgery-hero.jpg";
+const suppliedTreatment = "/sterilization-unit.jpg";
 const suppliedCare = "/female-treatment.jpg";
 const suppliedClinic = "/second.png";
 const treatmentScaling = "/Scaling & Polishing.png";
@@ -145,9 +145,9 @@ const heroSlides = [
     lede: "Bhaddar Dental OMFS — Because Your Smile Matters!",
   },
   {
-    src: "/oral-surgery-hero.jpg",
-    label: "Oral Surgery & OMFS",
-    alt: "Oral & maxillofacial surgeon performing clinical procedure with precision",
+    src: "/sterilization-unit.jpg",
+    label: "Sterilization & Clinical Standards",
+    alt: "Hospital-grade sterilization unit and modern dental technology",
     title: "Advanced OMFS Care &",
     emphasis: "Surgical Precision.",
     lede: "Modern surgical techniques and honest explanations, shaped around what your smile needs.",

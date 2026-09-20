@@ -834,7 +834,7 @@ export const servicesData: ServiceItem[] = [
     detailedDescription:
       "Oral & Maxillofacial Surgery is a comprehensive surgical specialty bridging medicine and dentistry. At Bhaddar Dental, our board-qualified OMFS surgeons diagnose and manage complex pathologies of the hard and soft tissues of the facial region, including jaw trauma, corrective jaw surgery, cyst and tumor resections, and complex reconstructive procedures.",
     heroImage: "/Oral & Maxillofacial Surgery.png",
-    galleryImages: ["/oral-surgery-hero.jpg", "/Oral & Maxillofacial Surgery.png", "/image1.png"],
+    galleryImages: ["/sterilization-unit.jpg", "/Oral & Maxillofacial Surgery.png", "/image1.png"],
     benefits: [
       {
         title: "Hospital-Grade Surgical Standards",
@@ -1071,7 +1071,7 @@ export const servicesData: ServiceItem[] = [
     detailedDescription:
       "For patients with extreme dental phobias, special healthcare needs, young children requiring extensive full-mouth rehabilitation, or complex multi-stage surgical procedures, dental care under General Anesthesia (GA) ensures complete unconsciousness and comfort throughout the entire treatment, overseen by certified medical anesthesiologists.",
     heroImage: "/Treatment Under General Anesthesia.png",
-    galleryImages: ["/Treatment Under General Anesthesia.png", "/oral-surgery-hero.jpg", "/image2.png"],
+    galleryImages: ["/Treatment Under General Anesthesia.png", "/sterilization-unit.jpg", "/image2.png"],
     benefits: [
       {
         title: "100% Painless & Unconscious",

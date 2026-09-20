@@ -128,8 +128,8 @@ export function OralMaxillofacialSection() {
               {/* Surgical Background Image */}
               <div className="omfs-card__image-wrap">
                 <img
-                  src="/oral-surgery-hero.jpg"
-                  alt="Oral and Maxillofacial surgeon performing surgical procedure with precision"
+                  src="/sterilization-unit.jpg"
+                  alt="State-of-the-art sterilization unit and specialized dental surgical equipment"
                   className="omfs-card__image"
                   loading="lazy"
                 />
