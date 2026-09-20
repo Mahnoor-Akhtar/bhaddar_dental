@@ -3,14 +3,16 @@ import {
   MapPin,
   Phone,
   Calendar,
-  Instagram,
-  Facebook,
+  Clock,
   ArrowRight,
-  Sparkles,
   Building2,
   Crown,
-  Compass,
 } from "lucide-react";
+
+export interface BranchTiming {
+  label: string;
+  time: string;
+}
 
 export interface BranchSocialLinks {
   instagram?: string | null;
@@ -31,6 +33,7 @@ export interface BranchItem {
   phone: string;
   phoneTel: string;
   established?: string | null;
+  timings: BranchTiming[];
   socialLinks: BranchSocialLinks;
   ctaText: string;
 }
@@ -48,6 +51,9 @@ export const branchesData: BranchItem[] = [
     phone: "053-3606069",
     phoneTel: "tel:0533606069",
     established: "Serving Since 1984",
+    timings: [
+      { label: "Mon – Sun", time: "16:00 – 21:00" },
+    ],
     socialLinks: {
       instagram: "https://www.instagram.com/bhaddardental/",
       facebook: null,
@@ -68,6 +74,11 @@ export const branchesData: BranchItem[] = [
     phone: "03374960842",
     phoneTel: "tel:03374960842",
     established: null,
+    timings: [
+      { label: "Mon – Fri", time: "09:00 - 20:00" },
+      { label: "Saturday", time: "10:00 - 16:00" },
+      { label: "Sunday", time: "By appointment" },
+    ],
     socialLinks: {
       instagram: "https://www.instagram.com/dentalcarebydrawais/reels/",
       facebook: "https://www.facebook.com/dentalcarebydrawais",
@@ -78,14 +89,55 @@ export const branchesData: BranchItem[] = [
   },
 ];
 
-function TikTokIcon({ size = 18, className = "" }: { size?: number; className?: string }) {
+function GoogleMapsIcon({ size = 20 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
+      <path
+        d="M12 2C8.13 2 5 5.13 5 9C5 14.25 12 22 12 22C12 22 19 14.25 19 9C19 5.13 15.87 2 12 2Z"
+        fill="#34A853"
+      />
+      <path
+        d="M12 2C8.13 2 5 5.13 5 9C5 11.3 5.95 13.38 7.49 14.88L12 7V2Z"
+        fill="#4285F4"
+      />
+      <path
+        d="M12 2V7L16.51 14.88C18.05 13.38 19 11.3 19 9C19 5.13 15.87 2 12 2Z"
+        fill="#EA4335"
+      />
+      <path
+        d="M12 7L7.49 14.88C8.68 16.32 10.22 18.25 12 20.93V7Z"
+        fill="#FBBC04"
+      />
+      <circle cx="12" cy="9" r="2.8" fill="#FFFFFF" />
+    </svg>
+  );
+}
+
+function InstagramIcon({ size = 20 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
+      <rect x="2" y="2" width="20" height="20" rx="5.5" stroke="#E1306C" strokeWidth="2" />
+      <circle cx="12" cy="12" r="4.2" stroke="#E1306C" strokeWidth="2" />
+      <circle cx="17.5" cy="6.5" r="1.3" fill="#E1306C" />
+    </svg>
+  );
+}
+
+function FacebookIcon({ size = 20 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="#1877F2">
+      <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+    </svg>
+  );
+}
+
+function TikTokIcon({ size = 18 }: { size?: number }) {
   return (
     <svg
       width={size}
       height={size}
       viewBox="0 0 24 24"
-      fill="currentColor"
-      className={className}
+      fill="#000000"
       aria-hidden="true"
     >
       <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64c.298-.002.595.042.88.13V9.4a6.33 6.33 0 0 0-1-.08A6.34 6.34 0 0 0 3 15.66a6.34 6.34 0 0 0 10.79 4.49 6.27 6.27 0 0 0 1.88-4.48V8.77a8.28 8.28 0 0 0 4.92 1.6V6.92a4.88 4.88 0 0 1-1-.23z" />
@@ -144,10 +196,11 @@ export function BranchCard({ branch, index }: BranchCardProps) {
           )}
         </div>
 
-        {/* Contact Strip (Address & Phone) */}
+        {/* 3-Column Info Strip (Location, Direct Contact, Clinic Hours) */}
         <div className="branch-card__meta-strip">
+          {/* Location */}
           <div className="branch-card__meta-item">
-            <div className="branch-card__meta-icon-box">
+            <div className="branch-card__meta-icon-box branch-card__meta-icon-box--green">
               <MapPin size={16} />
             </div>
             <div className="branch-card__meta-text">
@@ -156,9 +209,10 @@ export function BranchCard({ branch, index }: BranchCardProps) {
             </div>
           </div>
 
+          {/* Direct Contact */}
           <div className="branch-card__meta-item">
-            <div className="branch-card__meta-icon-box">
-              <Phone size={16} />
+            <div className="branch-card__meta-icon-box branch-card__meta-icon-box--blue">
+              <Phone size={15} />
             </div>
             <div className="branch-card__meta-text">
               <span className="branch-card__meta-label">Direct Contact</span>
@@ -169,6 +223,24 @@ export function BranchCard({ branch, index }: BranchCardProps) {
               >
                 {branch.phone}
               </a>
+            </div>
+          </div>
+
+          {/* Clinic Hours */}
+          <div className="branch-card__meta-item">
+            <div className="branch-card__meta-icon-box branch-card__meta-icon-box--green">
+              <Clock size={16} />
+            </div>
+            <div className="branch-card__meta-text">
+              <span className="branch-card__meta-label">Clinic Hours</span>
+              <div className="branch-card__meta-timings">
+                {branch.timings.map((timing, i) => (
+                  <div key={i} className="branch-card__timing-row">
+                    <span className="branch-card__timing-day">{timing.label}</span>
+                    <span className="branch-card__timing-val">{timing.time}</span>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
@@ -185,9 +257,9 @@ export function BranchCard({ branch, index }: BranchCardProps) {
                 rel="noopener noreferrer"
                 className="branch-icon-btn branch-icon-btn--instagram"
                 aria-label={`${branch.name} Instagram`}
-                title="Instagram (@bhaddardental)"
+                title={`Instagram (${branch.name})`}
               >
-                <Instagram size={20} />
+                <InstagramIcon size={20} />
               </a>
             )}
 
@@ -201,7 +273,7 @@ export function BranchCard({ branch, index }: BranchCardProps) {
                 aria-label={`${branch.name} Facebook`}
                 title={`Facebook (${branch.name})`}
               >
-                <Facebook size={20} />
+                <FacebookIcon size={20} />
               </a>
             )}
 
@@ -213,9 +285,9 @@ export function BranchCard({ branch, index }: BranchCardProps) {
                 rel="noopener noreferrer"
                 className="branch-icon-btn branch-icon-btn--tiktok"
                 aria-label={`${branch.name} TikTok`}
-                title="TikTok (@dentalcarebydrawais)"
+                title={`TikTok (${branch.name})`}
               >
-                <TikTokIcon size={20} />
+                <TikTokIcon size={18} />
               </a>
             )}
 
@@ -229,7 +301,7 @@ export function BranchCard({ branch, index }: BranchCardProps) {
                 aria-label={`${branch.name} Google Maps Location`}
                 title="View on Google Maps"
               >
-                <Compass size={20} />
+                <GoogleMapsIcon size={20} />
               </a>
             )}
           </div>

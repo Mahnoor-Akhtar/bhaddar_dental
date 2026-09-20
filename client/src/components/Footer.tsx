@@ -2,10 +2,6 @@ import React from "react";
 import {
   ArrowRight,
   ChevronRight,
-  Clock3,
-  Mail,
-  MapPin,
-  Phone,
 } from "lucide-react";
 
 export function Footer() {
@@ -15,7 +11,7 @@ export function Footer() {
       <div className="custom-footer__glow-sphere custom-footer__glow-sphere--1" aria-hidden="true" />
       <div className="custom-footer__glow-sphere custom-footer__glow-sphere--2" aria-hidden="true" />
 
-      {/* TOP DESKTOP CTA BANNER (Image 2) */}
+      {/* TOP DESKTOP CTA BANNER */}
       <div className="container custom-footer__cta-container">
         <div className="custom-footer-cta">
           <div className="custom-footer-cta__glow" aria-hidden="true" />
@@ -63,7 +59,7 @@ export function Footer() {
       </div>
 
       <div className="container custom-footer__main">
-        {/* MOBILE HEADER (Image 1 - Brand & Script) */}
+        {/* MOBILE HEADER */}
         <div className="custom-footer__mobile-brand">
           <div className="custom-footer__mobile-brand-top">
             <a href="/#top" className="custom-footer__brand-link" aria-label="Bhaddar Dental home">
@@ -103,50 +99,7 @@ export function Footer() {
           </p>
         </div>
 
-        {/* 3 CONTACT ACTION CARDS (Image 1) */}
-        <div className="custom-footer__action-cards">
-          {/* Card 1: Call Us */}
-          <a href="tel:0544613444" className="custom-footer__action-card">
-            <div className="custom-footer__action-icon">
-              <Phone size={17} />
-            </div>
-            <div className="custom-footer__action-content">
-              <span className="custom-footer__action-title">Call Us</span>
-              <span className="custom-footer__action-sub">0544-613444</span>
-            </div>
-          </a>
-
-          {/* Card 2: Email Us */}
-          <a href="mailto:contact@dentalcarebydrawais.com" className="custom-footer__action-card">
-            <div className="custom-footer__action-icon">
-              <Mail size={17} />
-            </div>
-            <div className="custom-footer__action-content">
-              <span className="custom-footer__action-title">Email Us</span>
-              <span className="custom-footer__action-sub custom-footer__action-sub--email">
-                contact@dentalcarebydrawais.com
-              </span>
-            </div>
-          </a>
-
-          {/* Card 3: Get Directions */}
-          <a
-            href="https://maps.google.com/?q=Circular+Road+Near+Butt+Service+Station+Chandni+Chowk+Jalalpur+Jattan"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="custom-footer__action-card"
-          >
-            <div className="custom-footer__action-icon">
-              <MapPin size={17} />
-            </div>
-            <div className="custom-footer__action-content">
-              <span className="custom-footer__action-title">Get Directions</span>
-              <span className="custom-footer__action-sub">View on Maps</span>
-            </div>
-          </a>
-        </div>
-
-        {/* MAIN 4-COLUMN DESKTOP / 2-COLUMN MOBILE GRID */}
+        {/* MAIN 2-COLUMN GRID */}
         <div className="custom-footer__grid">
           {/* Col 1: Desktop Brand Info */}
           <div className="custom-footer__col custom-footer__col--brand">
@@ -209,129 +162,12 @@ export function Footer() {
                 </a>
               </li>
               <li>
-                <a href="/#services" className="custom-footer__nav-link custom-footer__nav-link--extra">
-                  <span>FAQs</span>
-                  <ChevronRight size={15} className="custom-footer__nav-arrow" />
-                </a>
-              </li>
-              <li>
                 <a href="/#contact" className="custom-footer__nav-link custom-footer__nav-link--extra">
                   <span>Contact Us</span>
                   <ChevronRight size={15} className="custom-footer__nav-arrow" />
                 </a>
               </li>
             </ul>
-          </div>
-
-          {/* Col 3: FIND US (and mobile combined with Clinic Hours) */}
-          <div className="custom-footer__col custom-footer__col--find">
-            <div className="custom-footer__heading">
-              <span className="custom-footer__heading-text">FIND US</span>
-              <span className="custom-footer__heading-underline" />
-            </div>
-            <div className="custom-footer__info-group">
-              <div className="custom-footer__info-item">
-                <div className="custom-footer__info-icon">
-                  <MapPin size={17} />
-                </div>
-                <div className="custom-footer__info-text">
-                  <strong className="custom-footer__info-title">
-                    Circular Road, Near Butt Service Station
-                  </strong>
-                  <span className="custom-footer__info-sub">
-                    Chandni Chowk, Jalalpur Jattan 50700
-                  </span>
-                </div>
-              </div>
-
-              <a
-                href="mailto:contact@dentalcarebydrawais.com"
-                className="custom-footer__info-item custom-footer__info-item--clickable"
-              >
-                <div className="custom-footer__info-icon">
-                  <Mail size={17} />
-                </div>
-                <div className="custom-footer__info-text">
-                  <span className="custom-footer__info-email">
-                    contact@dentalcarebydrawais.com
-                  </span>
-                </div>
-              </a>
-            </div>
-
-            {/* Mobile-only Clinic Hours placed under Find Us */}
-            <div className="custom-footer__mobile-hours-wrap">
-              <div className="custom-footer__heading">
-                <span className="custom-footer__heading-text">CLINIC HOURS</span>
-                <span className="custom-footer__heading-underline" />
-              </div>
-              <div className="custom-footer__hours-group">
-                <div className="custom-footer__info-item">
-                  <div className="custom-footer__info-icon">
-                    <Clock3 size={17} />
-                  </div>
-                  <div className="custom-footer__info-text">
-                    <strong className="custom-footer__info-title">Mon – Fri</strong>
-                    <span className="custom-footer__info-sub">09:00 – 20:00</span>
-                  </div>
-                </div>
-                <div className="custom-footer__info-item">
-                  <div className="custom-footer__info-icon">
-                    <Clock3 size={17} />
-                  </div>
-                  <div className="custom-footer__info-text">
-                    <strong className="custom-footer__info-title">Saturday</strong>
-                    <span className="custom-footer__info-sub">10:00 – 16:00</span>
-                  </div>
-                </div>
-                <div className="custom-footer__info-item">
-                  <div className="custom-footer__info-icon">
-                    <Clock3 size={17} />
-                  </div>
-                  <div className="custom-footer__info-text">
-                    <strong className="custom-footer__info-title">Sunday</strong>
-                    <span className="custom-footer__info-sub">By appointment</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Col 4: CLINIC HOURS (Desktop Only) */}
-          <div className="custom-footer__col custom-footer__col--hours-desktop">
-            <div className="custom-footer__heading">
-              <span className="custom-footer__heading-text">CLINIC HOURS</span>
-              <span className="custom-footer__heading-underline" />
-            </div>
-            <div className="custom-footer__hours-group">
-              <div className="custom-footer__info-item">
-                <div className="custom-footer__info-icon">
-                  <Clock3 size={17} />
-                </div>
-                <div className="custom-footer__info-text">
-                  <strong className="custom-footer__info-title">Mon – Fri</strong>
-                  <span className="custom-footer__info-sub">09:00 – 20:00</span>
-                </div>
-              </div>
-              <div className="custom-footer__info-item">
-                <div className="custom-footer__info-icon">
-                  <Clock3 size={17} />
-                </div>
-                <div className="custom-footer__info-text">
-                  <strong className="custom-footer__info-title">Saturday</strong>
-                  <span className="custom-footer__info-sub">10:00 – 16:00</span>
-                </div>
-              </div>
-              <div className="custom-footer__info-item">
-                <div className="custom-footer__info-icon">
-                  <Clock3 size={17} />
-                </div>
-                <div className="custom-footer__info-text">
-                  <strong className="custom-footer__info-title">Sunday</strong>
-                  <span className="custom-footer__info-sub">By appointment</span>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
 
@@ -368,7 +204,7 @@ export function Footer() {
         </svg>
       </div>
 
-      {/* COPYRIGHT & LEGAL BOTTOM BAR (Image 1 & 2) */}
+      {/* COPYRIGHT & LEGAL BOTTOM BAR */}
       <div className="custom-footer__bottom-bar">
         <div className="container custom-footer__bottom-inner">
           <span className="custom-footer__copyright">

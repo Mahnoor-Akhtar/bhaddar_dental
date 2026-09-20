@@ -103,7 +103,7 @@ const teamMembers: TeamDoctor[] = [
     badgeType: "member",
     qualifications: "BDS, MSc Orthodontics",
     specialties: ["Specialist Fixed Braces"],
-    image: "/Uzma.png",
+    image: "/Uzma.jpeg",
     linkedin: "https://linkedin.com",
     instagram: "https://instagram.com",
     email: "mailto:contact@dentalcarebydrawais.com",
