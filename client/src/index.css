@@ -2280,10 +2280,10 @@ a.footer-detail:hover { color: #FFFFFF; }
   -webkit-backdrop-filter: blur(14px);
   border-radius: 20px;
   padding: 12px 18px;
-  display: grid;
-  grid-template-columns: 1fr auto 1fr auto 1fr;
+  display: flex;
+  justify-content: space-around;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
   box-shadow: 0 12px 30px rgba(7, 59, 102, 0.14);
   border: 1px solid rgba(255, 255, 255, 0.85);
 }

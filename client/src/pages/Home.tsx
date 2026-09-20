@@ -125,7 +125,7 @@ const teamMembers: TeamDoctor[] = [
     name: "Dr. Umara Saad",
     role: "Team Member",
     badgeType: "member",
-    qualifications: "BDS, FCPS (Oral and Maxillofacial Surgery), CHPE",
+    qualifications: "BDS, FCPS, CHPE",
     specialties: ["Oral & Maxillofacial Surgeon"],
     image: "/Umaira.jpeg",
     linkedin: "https://linkedin.com",

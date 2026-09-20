@@ -39,7 +39,6 @@ export const omHighlightsData: OMHighlight[] = [
 export const omLocationsData: OMLocation[] = [
   { name: "Gujrat" },
   { name: "Jalalpurjattan" },
-  { name: "Surroundings" },
 ];
 
 export function OralMaxillofacialSection() {
@@ -85,9 +84,7 @@ export function OralMaxillofacialSection() {
               <span className="omfs-title__bottom-row">
                 <span className="omfs-title__accent">Surgery</span>
                 <span className="omfs-title__location">
-                  in Gujrat, Jalalpurjattan
-                  <br />
-                  and surroundings...
+                  in Gujrat &amp; Jalalpurjattan
                 </span>
               </span>
             </h2>
