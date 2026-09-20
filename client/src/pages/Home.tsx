@@ -40,27 +40,25 @@ import { OralMaxillofacialSection } from "../components/OralMaxillofacialSection
 import { OurBranchesSection } from "../components/OurBranchesSection";
 import { servicesData } from "../data/servicesData";
 
-// Public asset host can be overridden on Vercel with VITE_ASSET_BASE_URL.
-const assetBaseUrl = (import.meta.env.VITE_ASSET_BASE_URL || "https://brightsmile-4jarhlb3.manus.space").replace(/\/$/, "");
-const publicAsset = (path: string) => `${assetBaseUrl}${path}`;
-const generatedHero = publicAsset("/manus-storage/brightsmile-professional-hero_e4867d2e.png");
-const suppliedHero = publicAsset("/manus-storage/source-hero_3e8f32c2.jpeg");
-const generatedMark = publicAsset("/manus-storage/brightsmile-mascot-transparent_1169474d.png");
+// Local self-hosted public assets for 100% reliable loading on all devices
+const generatedHero = "/main.png";
+const suppliedHero = "/main.png";
+const generatedMark = "/logo.png";
 const mascotMark = "/logo.png";
-const suppliedChair = publicAsset("/manus-storage/source-chair_36d212fc.webp");
-const suppliedTreatment = publicAsset("/manus-storage/brightsmile-hero-lab_817e3482.png");
-const suppliedCare = publicAsset("/manus-storage/source-care_468c4db4.jpg");
-const suppliedClinic = publicAsset("/manus-storage/source-clinic_d10f9fab.jpg");
-const treatmentScaling = publicAsset("/manus-storage/scaling-root-planing_cf7bebe9.png");
-const treatmentWhitening = publicAsset("/manus-storage/teeth-whitening_2985d7aa.png");
-const treatmentFillings = publicAsset("/manus-storage/dental-fillings_cca82b16.png");
-const treatmentRootCanal = publicAsset("/manus-storage/root-canal_5daa8523.png");
-const treatmentExtraction = publicAsset("/manus-storage/tooth-extraction_1b88871d.png");
-const treatmentImplants = publicAsset("/manus-storage/dental-implants_9edc6c47.png");
-const treatmentDentures = publicAsset("/manus-storage/dentures_be8d9fd8.png");
-const treatmentBraces = publicAsset("/manus-storage/braces_e81f3148.png");
-const treatmentGumDisease = publicAsset("/manus-storage/gum-disease_879c8e32.png");
-const treatmentClinicDentist = publicAsset("/manus-storage/clinic-dentist_591ad9b4.png");
+const suppliedChair = "/second.png";
+const suppliedTreatment = "/oral-surgery-hero.jpg";
+const suppliedCare = "/female-treatment.jpg";
+const suppliedClinic = "/second.png";
+const treatmentScaling = "/Scaling & Polishing.png";
+const treatmentWhitening = "/Clear Braces.png";
+const treatmentFillings = "/Crown & Bridge.png";
+const treatmentRootCanal = "/Endodontic Treatment.png";
+const treatmentExtraction = "/Tooth Extraction.png";
+const treatmentImplants = "/Dental Implants.png";
+const treatmentDentures = "/Removable Dentures.png";
+const treatmentBraces = "/Fixed Braces.png";
+const treatmentGumDisease = "/Scaling & Polishing.png";
+const treatmentClinicDentist = "/Minor Oral Surgery.png";
 
 interface TeamDoctor {
   name: string;
