@@ -248,16 +248,14 @@ export default function Home() {
       window.history.scrollRestoration = "manual";
     }
 
-    const hash = window.location.hash;
-    if (!hash || hash === "#top" || hash === "#") {
-      window.scrollTo(0, 0);
-    } else {
-      setTimeout(() => {
-        const target = document.querySelector(hash);
-        if (target) {
-          target.scrollIntoView({ behavior: "smooth", block: "start" });
-        }
-      }, 150);
+    // Always ensure page starts at the top hero section when loaded/refreshed
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+
+    // If initial load has a leftover hash, clean it up so reload stays at top
+    if (window.location.hash && window.location.hash !== "#top") {
+      window.history.replaceState(null, "", window.location.pathname);
     }
 
     const handleHashChange = () => {

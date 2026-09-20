@@ -47,7 +47,7 @@ export function ServiceDetailPage() {
     if (window.history.length > 1) {
       window.history.back();
     } else {
-      setLocation("/#services");
+      setLocation("/");
     }
   };
 
