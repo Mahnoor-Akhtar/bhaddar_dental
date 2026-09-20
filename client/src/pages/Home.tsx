@@ -1,10 +1,11 @@
 // Design philosophy: Warm Editorial Smile — use calm editorial composition, warm ivory surfaces, ink-teal hierarchy, sea-glass green actions, and plainspoken reassurance.
 import { useEffect, useState, type CSSProperties, type FormEvent } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, EffectCoverflow, Navigation } from "swiper/modules";
+import { Autoplay, EffectCoverflow, Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/navigation";
+import "swiper/css/pagination";
 import {
   ArrowDownRight,
   ArrowLeft,
@@ -18,6 +19,7 @@ import {
   Cross,
   HeartPulse,
   Instagram,
+  Linkedin,
   Mail,
   MapPin,
   Menu,
@@ -58,17 +60,80 @@ const treatmentDentures = publicAsset("/manus-storage/dentures_be8d9fd8.png");
 const treatmentBraces = publicAsset("/manus-storage/braces_e81f3148.png");
 const treatmentGumDisease = publicAsset("/manus-storage/gum-disease_879c8e32.png");
 const treatmentClinicDentist = publicAsset("/manus-storage/clinic-dentist_591ad9b4.png");
-const teamPortraitMahnoor = publicAsset("/manus-storage/dr-mahnoor_bf7623a9.png");
-const teamPortraitHaris = publicAsset("/manus-storage/muhammad-haris-khan_e8b65594.png");
 
-const teamExperts = [
+interface TeamDoctor {
+  name: string;
+  role: "Founder" | "CEO" | "Team Member";
+  badgeType: "founder" | "ceo" | "member";
+  qualifications: string;
+  specialties: string[];
+  image: string;
+  linkedin: string;
+  instagram: string;
+  email: string;
+  phone: string;
+}
+
+const teamMembers: TeamDoctor[] = [
+  {
+    name: "Dr. Farooq Chaudry",
+    role: "Founder",
+    badgeType: "founder",
+    qualifications: "BDS (de’mont) FCWI (UK) MACS (USA)",
+    specialties: ["Chief Dental Surgeon", "Consultant Implantologist"],
+    image: "/Founder.jpeg",
+    linkedin: "https://linkedin.com",
+    instagram: "https://instagram.com",
+    email: "mailto:contact@dentalcarebydrawais.com",
+    phone: "tel:+923374960842",
+  },
+  {
+    name: "Dr. Umair Farooq Chaudry",
+    role: "CEO",
+    badgeType: "ceo",
+    qualifications: "BDS (UOL) MDS OMFS (PIMS)",
+    specialties: ["Oral & Maxillofacial Surgeon"],
+    image: "/CEO.jpeg",
+    linkedin: "https://linkedin.com",
+    instagram: "https://instagram.com",
+    email: "mailto:contact@dentalcarebydrawais.com",
+    phone: "tel:+923374960842",
+  },
   {
     name: "Dr. Awais Farooq Ch",
-    role: "FOUNDER",
-    roleSuffix: "Of Bhaddar Dental OMFS",
-    bio: "Dr Awais Farooq is dedicated to create healthy, confident, and beautiful smiles with expert dental care.",
-    specialties: ["Cosmetic Dentistry", "Dental Implants", "Root Canal Treatment", "Smile Makeovers", "Preventive Care"],
+    role: "Team Member",
+    badgeType: "member",
+    qualifications: "BDS, RDS (SZABMU)",
+    specialties: ["Dental Surgeon"],
     image: "/dr-awais.png",
+    linkedin: "https://linkedin.com",
+    instagram: "https://instagram.com",
+    email: "mailto:contact@dentalcarebydrawais.com",
+    phone: "tel:+923374960842",
+  },
+  {
+    name: "Dr. Umara Saad",
+    role: "Team Member",
+    badgeType: "member",
+    qualifications: "BDS, FCPS (Oral and Maxillofacial Surgery), CHPE",
+    specialties: ["Oral & Maxillofacial Surgeon"],
+    image: "/Umaira.jpeg",
+    linkedin: "https://linkedin.com",
+    instagram: "https://instagram.com",
+    email: "mailto:contact@dentalcarebydrawais.com",
+    phone: "tel:+923374960842",
+  },
+  {
+    name: "Dr. Uzma Ismail",
+    role: "Team Member",
+    badgeType: "member",
+    qualifications: "BDS, MSc Orthodontics",
+    specialties: ["Specialist Fixed Braces"],
+    image: "/Uzma.png",
+    linkedin: "https://linkedin.com",
+    instagram: "https://instagram.com",
+    email: "mailto:contact@dentalcarebydrawais.com",
+    phone: "tel:+923374960842",
   },
 ];
 
@@ -109,6 +174,80 @@ const galleryItems = [
 function scrollToSection(href: string) {
   const target = document.querySelector(href);
   target?.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+function TeamCard({ doctor }: { doctor: TeamDoctor }) {
+  return (
+    <article className="team-card">
+      <div className="team-card__image-container">
+        <img
+          src={doctor.image}
+          alt={doctor.name}
+          className="team-card__img"
+          loading="lazy"
+        />
+        <div className="team-card__wave" aria-hidden="true">
+          <svg viewBox="0 0 500 60" preserveAspectRatio="none">
+            <path d="M0,0 C150,50 350,-20 500,30 L500,60 L0,60 Z" fill="#ffffff" />
+          </svg>
+        </div>
+      </div>
+
+      <div className="team-card__badge-wrapper">
+        <span className={`team-card__badge team-card__badge--${doctor.badgeType}`}>
+          {doctor.role}
+        </span>
+      </div>
+
+      <div className="team-card__body">
+        <h3 className="team-card__name">{doctor.name}</h3>
+        <p className="team-card__qualifications">{doctor.qualifications}</p>
+        
+        <div className="team-card__divider" aria-hidden="true" />
+
+        <div className="team-card__specialties">
+          {doctor.specialties.map((spec, idx) => (
+            <span key={idx} className="team-card__specialty-item">{spec}</span>
+          ))}
+        </div>
+
+        <div className="team-card__socials" aria-label={`Connect with ${doctor.name}`}>
+          <a
+            href={doctor.linkedin}
+            className="team-card__social-btn"
+            aria-label={`${doctor.name} LinkedIn`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Linkedin size={15} strokeWidth={1.75} />
+          </a>
+          <a
+            href={doctor.instagram}
+            className="team-card__social-btn"
+            aria-label={`${doctor.name} Instagram`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Instagram size={15} strokeWidth={1.75} />
+          </a>
+          <a
+            href={doctor.email}
+            className="team-card__social-btn"
+            aria-label={`Email ${doctor.name}`}
+          >
+            <Mail size={15} strokeWidth={1.75} />
+          </a>
+          <a
+            href={doctor.phone}
+            className="team-card__social-btn"
+            aria-label={`Call ${doctor.name}`}
+          >
+            <Phone size={15} strokeWidth={1.75} />
+          </a>
+        </div>
+      </div>
+    </article>
+  );
 }
 
 export default function Home() {
@@ -250,17 +389,57 @@ export default function Home() {
         <section id="about" className="about section-pad animate-in">
           <div className="container about__grid">
             <div className="about__visual about__visual--from-left animate-in">
-              <div className="about__image-main animate-in"><img src={suppliedCare} alt="Dr. Awais dental team and patient" /></div>
-              <div className="about__image-small animate-in" style={{ "--stagger": "140ms" } as CSSProperties}><img src={suppliedChair} alt="Close view of modern dental chair and equipment" /></div>
-              <div className="about__seal animate-in" style={{ "--stagger": "220ms" } as CSSProperties}><span>Expert Care<br />by Dr. Awais</span><Sparkles size={17} /></div>
+              <div className="about__floating-script" aria-hidden="true">
+                <span>Healthy</span>
+                <span>Smiles</span>
+                <span>Brighter</span>
+                <span>Futures</span>
+                <svg className="about__script-swoosh" viewBox="0 0 110 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M5 16C35 24 75 22 105 6" stroke="#60a5fa" strokeWidth="2.2" strokeLinecap="round" />
+                </svg>
+              </div>
+
+              <div className="about__image-main animate-in">
+                <img src={suppliedCare} alt="Bhaddar Dental dentist and patient smiling" />
+              </div>
+
+              <div className="about__image-small animate-in" style={{ "--stagger": "140ms" } as CSSProperties}>
+                <img src={suppliedChair} alt="Bhaddar Dental modern clinical studio" />
+              </div>
+
+              <div className="about__since-badge animate-in" style={{ "--stagger": "220ms" } as CSSProperties}>
+                <div className="about__since-card">
+                  <span className="about__since-kicker">SERVING SINCE</span>
+                  <strong className="about__since-year">1994</strong>
+                  <span className="about__since-divider" />
+                </div>
+                <span className="about__since-tagline">
+                  THREE DECADES OF<br />TRUSTED DENTAL CARE
+                </span>
+              </div>
             </div>
+
             <div className="about__copy about__copy--from-right animate-in">
-              <p className="eyebrow"><span className="eyebrow__rule" />Dentist & Dental Office</p>
-              <h2>Transform Your Smile with <em>Expert Care 🦷</em></h2>
-              <p className="body-copy">Bhaddar Dental OMFS — Because Your Smile Matters! Clear, modern dentistry for healthier, brighter smiles.</p>
-              <a className="text-link" href="#team">Meet Dr. Awais & team <MoveRight size={17} /></a>
-              <div className="about__signature"><span className="signature-line" /><span>Dr. Awais & Team</span></div>
-              <span className="smile-arc" aria-hidden="true" />
+              <div className="about__eyebrow">
+                <span className="about__eyebrow-line" />
+                <span>DENTIST & DENTAL OFFICE</span>
+              </div>
+
+              <h2 className="about__title">
+                Transform<br />
+                Your Smile<br />
+                with <em>Expert</em><br />
+                <em>Care</em> <span className="about__tooth-icon" aria-hidden="true">🦷</span>
+              </h2>
+
+              <div className="about__divider-line" />
+
+              <p className="about__highlight">
+                Bhaddar Dental OMFS — Because Your Smile Matters!
+              </p>
+              <p className="about__subtext">
+                Clear, modern dentistry for healthier, brighter smiles.
+              </p>
             </div>
           </div>
         </section>
@@ -303,68 +482,47 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="team" className="team section-pad animate-in">
-          <div className="container team__header team__header--centered">
-            <p className="eyebrow"><span className="eyebrow__rule" />Meet our dental experts</p>
-            <h2>Dedicated to your <em>healthiest smile.</em></h2>
+        <section id="team" className="team-section section-pad animate-in">
+          <div className="container team-container">
+            <div className="team-header-wrapper">
+              <div className="team-eyebrow">
+                <span className="team-eyebrow-line" />
+                <span>OUR TEAM</span>
+                <span className="team-eyebrow-line" />
+              </div>
+              <h2 className="team-main-title">
+                Meet Our <em>Expert</em> Team
+              </h2>
+              <p className="team-subtitle">
+                A dedicated team of experienced dental professionals committed to delivering advanced, compassionate and patient-centered care.
+              </p>
+              <div className="team-floating-script" aria-hidden="true">
+                <span>Healthy Smiles,</span>
+                <span>Happier Lives</span>
+                <svg className="team-script-swoosh" viewBox="0 0 160 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M5 18C45 28 115 28 155 8" stroke="#8ED6FF" strokeWidth="2.5" strokeLinecap="round" />
+                </svg>
+              </div>
+            </div>
+
+            <div className="team-grid">
+              {teamMembers.map((doctor) => (
+                <TeamCard key={doctor.name} doctor={doctor} />
+              ))}
+            </div>
+
+            <div className="team__trust" aria-label="Why patients trust our team">
+              <span>Why patients trust our team</span>
+              <div className="team__trust-list">
+                <b>Board-certified professionals</b>
+                <b>Patient-centered plans</b>
+                <b>Modern techniques</b>
+                <b>Comfortable environment</b>
+                <b>Long-term oral health</b>
+              </div>
+              <strong>Together, we’re dedicated to expert care for every smile.</strong>
+            </div>
           </div>
-          <div className="container team__people team__people--single" aria-label="Bhaddar Dental founder">
-            {teamExperts.map((expert) => (
-              <article className="team__person team__person--single animate-in" key={expert.name}>
-                <div className="team__person-image">
-                  <img src={expert.image} alt={expert.name} />
-                </div>
-                <div className="team__person-copy">
-                  <div className="team__role-badge">
-                    <span>{expert.role}</span>
-                    <small>{expert.roleSuffix}</small>
-                  </div>
-                  <h3>{expert.name}</h3>
-                  <p className="team__intro-copy">
-                    At Bhaddar Dental OMFS, our team combines clinical excellence with a patient-first approach. Every treatment is delivered with precision, compassion, and a commitment to your long-term oral health.
-                  </p>
-                  <p className="team__bio-text">
-                    <span className="tooth-bullet">🦷</span> {expert.bio}
-                  </p>
-                  <div className="team__stats-grid">
-                    <div className="team__stat-item">
-                      <strong>8+ Years</strong>
-                      <span>Clinical Excellence</span>
-                    </div>
-                    <div className="team__stat-item">
-                      <strong>1,000+</strong>
-                      <span>Transformed Smiles</span>
-                    </div>
-                    <div className="team__stat-item">
-                      <strong>100%</strong>
-                      <span>Gentle & Painless</span>
-                    </div>
-                  </div>
-                  <div className="team__specialties-block">
-                    <strong>Specialties & Clinical Care</strong>
-                    <ul>
-                      {expert.specialties.map((specialty) => (
-                        <li key={specialty}>{specialty}</li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div className="team__card-action">
-                    <a
-                      href={WHATSAPP_URL}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="button button--whatsapp button--small"
-                    >
-                      <MessageCircle size={18} />
-                      <span>Book Consultation with Dr. Awais</span>
-                      <ArrowUpRight size={15} />
-                    </a>
-                  </div>
-                </div>
-              </article>
-            ))}
-          </div>
-          <div className="container team__trust" aria-label="Why patients trust our team"><span>Why patients trust our team</span><div className="team__trust-list"><b>Board-certified professionals</b><b>Patient-centered plans</b><b>Modern techniques</b><b>Comfortable environment</b><b>Long-term oral health</b></div><strong>Together, we’re dedicated to expert care for every smile.</strong></div>
         </section>
 
         <section id="gallery" className="gallery section-pad section-pad--mist animate-in">
