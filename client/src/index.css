@@ -697,7 +697,7 @@ body { min-width: 320px; overflow-x: hidden; }
   .hero__actions .button, .hero__actions .text-link { width: auto; justify-content: center; }
 }
 
-/* About section: Modern medical editorial layout with prominent Serving Since 1994 badge */
+/* About section: Modern medical editorial layout with prominent Serving Since 1984 badge */
 .about {
   position: relative;
   background: radial-gradient(circle at 10% 30%, rgba(224, 242, 254, 0.5) 0%, rgba(240, 249, 255, 0.25) 50%, #ffffff 100%);
@@ -786,7 +786,7 @@ body { min-width: 320px; overflow-x: hidden; }
   object-position: center;
 }
 
-/* Serving Since 1994 badge */
+/* Serving Since 1984 badge */
 .about__since-badge {
   position: absolute;
   left: clamp(-16px, -1vw, -6px);

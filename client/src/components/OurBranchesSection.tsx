@@ -47,7 +47,7 @@ export const branchesData: BranchItem[] = [
     address: "City Hospital Road, Gujrat",
     phone: "053-3606069",
     phoneTel: "tel:0533606069",
-    established: "Serving Since 1994",
+    established: "Serving Since 1984",
     socialLinks: {
       instagram: "https://www.instagram.com/bhaddardental/",
       facebook: null,
@@ -60,10 +60,10 @@ export const branchesData: BranchItem[] = [
     id: "second-branch",
     type: "Second Branch",
     badgeIcon: "building",
-    name: "Dental Care By Dr Awais",
+    name: "Dental Care at Day Care Hospital",
     subtitle: "Dental Clinic",
     image: "/second.png",
-    imageAlt: "Dental Care By Dr Awais branch in Jalalpur Jattan",
+    imageAlt: "Dental Care at Day Care Hospital branch in Jalalpur Jattan",
     address: "Jalalpur Jattan",
     phone: "03374960842",
     phoneTel: "tel:03374960842",
@@ -199,7 +199,7 @@ export function BranchCard({ branch, index }: BranchCardProps) {
                 rel="noopener noreferrer"
                 className="branch-icon-btn branch-icon-btn--facebook"
                 aria-label={`${branch.name} Facebook`}
-                title="Facebook (Dental Care By Dr Awais)"
+                title={`Facebook (${branch.name})`}
               >
                 <Facebook size={20} />
               </a>

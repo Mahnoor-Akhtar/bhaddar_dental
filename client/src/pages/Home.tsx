@@ -444,11 +444,11 @@ export default function Home() {
               <div className="about__since-badge animate-in" style={{ "--stagger": "220ms" } as CSSProperties}>
                 <div className="about__since-card">
                   <span className="about__since-kicker">SERVING SINCE</span>
-                  <strong className="about__since-year">1994</strong>
+                  <strong className="about__since-year">1984</strong>
                   <span className="about__since-divider" />
                 </div>
                 <span className="about__since-tagline">
-                  THREE DECADES OF<br />TRUSTED DENTAL CARE
+                  FOUR DECADES OF<br />TRUSTED DENTAL CARE
                 </span>
               </div>
             </div>
