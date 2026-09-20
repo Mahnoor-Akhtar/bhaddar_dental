@@ -48,11 +48,12 @@ export const branchesData: BranchItem[] = [
     image: "/main.png",
     imageAlt: "Bhaddar Dental main branch in Gujrat",
     address: "City Hospital Road, Gujrat",
-    phone: "053-3606069",
+    phone: "03338472808",
     phoneTel: "tel:0533606069",
     established: "Serving Since 1984",
     timings: [
-      { label: "Mon – Sun", time: "16:00 – 21:00" },
+      { label: "Mon – Sat", time: "16:00 – 21:00" },
+      { label: "Emergency", time: "24/7 Available for emergency cases" },
     ],
     socialLinks: {
       instagram: "https://www.instagram.com/bhaddardental/",
@@ -234,12 +235,20 @@ export function BranchCard({ branch, index }: BranchCardProps) {
             <div className="branch-card__meta-text">
               <span className="branch-card__meta-label">Clinic Hours</span>
               <div className="branch-card__meta-timings">
-                {branch.timings.map((timing, i) => (
-                  <div key={i} className="branch-card__timing-row">
-                    <span className="branch-card__timing-day">{timing.label}</span>
-                    <span className="branch-card__timing-val">{timing.time}</span>
-                  </div>
-                ))}
+                {branch.timings.map((timing, i) => {
+                  const isEmergency = timing.label.toLowerCase() === "emergency";
+                  return (
+                    <div
+                      key={i}
+                      className={`branch-card__timing-row ${
+                        isEmergency ? "branch-card__timing-row--emergency" : ""
+                      }`}
+                    >
+                      <span className="branch-card__timing-day">{timing.label}</span>
+                      <span className="branch-card__timing-val">{timing.time}</span>
+                    </div>
+                  );
+                })}
               </div>
             </div>
           </div>

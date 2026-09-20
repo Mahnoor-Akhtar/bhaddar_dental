@@ -203,7 +203,7 @@ export function Footer() {
       <div className="custom-footer__bottom-bar">
         <div className="container custom-footer__bottom-inner">
           <span className="custom-footer__copyright">
-            © {new Date().getFullYear()} Bhaddar Dental. All Rights Reserved.
+            © 2021 &nbsp;&nbsp; Bhaddar Dental. All Rights Reserved.
           </span>
           <div className="custom-footer__legal-links">
             <a href="/#top" className="custom-footer__legal-link">Privacy Policy</a>
