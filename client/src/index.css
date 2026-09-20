@@ -1087,9 +1087,9 @@ h1 em, h2 em, h3 em { color: #0E6148; font-style: italic; }
 .custom-footer__brand-word-white { color: #FFFFFF; }
 .custom-footer__brand-word-cyan { color: #00E5FF; }
 
-.custom-footer__headline-block { display: flex; flex-direction: column; gap: 3px; margin-top: 4px; }
-.custom-footer__headline-white { font-size: clamp(17px, 1.6vw, 20px); font-weight: 700; color: #FFFFFF; margin: 0; line-height: 1.3; }
-.custom-footer__headline-cyan { font-size: clamp(17px, 1.6vw, 20px); font-weight: 700; color: #00E5FF; margin: 0; line-height: 1.3; }
+.custom-footer__headline-block { display: flex; flex-direction: column; gap: 4px; margin-top: 4px; }
+.custom-footer__headline-white { font-size: clamp(17px, 1.6vw, 20px); font-weight: 700; color: #FFFFFF; margin: 0; line-height: 1.35; letter-spacing: 0.035em; }
+.custom-footer__headline-cyan { font-size: clamp(17px, 1.6vw, 20px); font-weight: 700; color: #00E5FF; margin: 0; line-height: 1.35; letter-spacing: 0.035em; }
 .custom-footer__bio-text { font-size: 13.5px; line-height: 1.65; color: #94A3B8; max-width: 440px; margin: 0; }
 
 .custom-footer__signature-block { display: flex; flex-direction: column; gap: 7px; margin-top: 4px; }
