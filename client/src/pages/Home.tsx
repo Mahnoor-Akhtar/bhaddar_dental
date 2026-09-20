@@ -137,9 +137,30 @@ const teamMembers: TeamDoctor[] = [
 ];
 
 const heroSlides = [
-  { src: generatedHero, label: "Expert Care", alt: "Bhaddar Dental OMFS clinic", title: "Transform Your Smile with", emphasis: "Expert Care 🦷", lede: "Bhaddar Dental OMFS — Because Your Smile Matters!" },
-  { src: suppliedClinic, label: "Jalalpur Jattan Studio", alt: "Modern dental office in Jalalpur Jattan", title: "Dentistry that respects", emphasis: "your time & comfort.", lede: "Experienced care for healthier smiles and greater confidence." },
-  { src: suppliedTreatment, label: "Clinical Precision", alt: "Dental professional performing procedure", title: "Clarity before", emphasis: "every procedure.", lede: "Modern techniques and honest explanations, shaped around what your smile needs." },
+  {
+    src: "/consultation.png",
+    label: "Consultation & Care",
+    alt: "Professional dental assessment, diagnostics, and personalized consultation",
+    title: "Transform Your Smile with",
+    emphasis: "Expert Care 🦷",
+    lede: "Bhaddar Dental OMFS — Because Your Smile Matters!",
+  },
+  {
+    src: "/oral-surgery-hero.jpg",
+    label: "Oral Surgery & OMFS",
+    alt: "Oral & maxillofacial surgeon performing clinical procedure with precision",
+    title: "Advanced OMFS Care &",
+    emphasis: "Surgical Precision.",
+    lede: "Modern surgical techniques and honest explanations, shaped around what your smile needs.",
+  },
+  {
+    src: "/female-treatment.jpg",
+    label: "Female Treatment Suite",
+    alt: "Dedicated private dental treatment area with qualified female doctors",
+    title: "Dedicated Care in a",
+    emphasis: "Comfortable Space.",
+    lede: "Private treatment arrangements with qualified female doctors for your comfort and peace of mind.",
+  },
 ];
 
 const navItems = [
@@ -222,21 +243,37 @@ export default function Home() {
   };
 
   useEffect(() => {
-    const handleHashScroll = () => {
-      const hash = window.location.hash;
-      if (hash) {
-        setTimeout(() => {
-          const target = document.querySelector(hash);
-          if (target) {
-            target.scrollIntoView({ behavior: "smooth", block: "start" });
-          }
-        }, 120);
+    // Ensure manual scroll restoration so browsers don't jump down to previous scroll position on refresh/load
+    if ("scrollRestoration" in window.history) {
+      window.history.scrollRestoration = "manual";
+    }
+
+    const hash = window.location.hash;
+    if (!hash || hash === "#top" || hash === "#") {
+      window.scrollTo(0, 0);
+    } else {
+      setTimeout(() => {
+        const target = document.querySelector(hash);
+        if (target) {
+          target.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      }, 150);
+    }
+
+    const handleHashChange = () => {
+      const currentHash = window.location.hash;
+      if (currentHash && currentHash !== "#top" && currentHash !== "#") {
+        const target = document.querySelector(currentHash);
+        if (target) {
+          target.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      } else {
+        window.scrollTo({ top: 0, behavior: "smooth" });
       }
     };
 
-    handleHashScroll();
-    window.addEventListener("hashchange", handleHashScroll);
-    return () => window.removeEventListener("hashchange", handleHashScroll);
+    window.addEventListener("hashchange", handleHashChange);
+    return () => window.removeEventListener("hashchange", handleHashChange);
   }, []);
 
   useEffect(() => {
@@ -329,7 +366,7 @@ export default function Home() {
               <div
                 key={slide.label}
                 className={`hero__slide ${activeHero === index ? "hero__slide--active" : ""}`}
-                style={{ backgroundImage: `url(${slide.src})` }}
+                style={{ backgroundImage: `url("${encodeURI(slide.src)}")` }}
               />
             ))}
           </div>
@@ -454,7 +491,7 @@ export default function Home() {
                 slidesPerView="auto"
                 slideToClickedSlide
                 loop
-                autoplay={{ delay: 1000, disableOnInteraction: false, pauseOnMouseEnter: true }}
+                autoplay={{ delay: 3000, disableOnInteraction: false, pauseOnMouseEnter: true }}
                 navigation={{ nextEl: ".services-swiper-next", prevEl: ".services-swiper-prev" }}
                 speed={650}
                 grabCursor
