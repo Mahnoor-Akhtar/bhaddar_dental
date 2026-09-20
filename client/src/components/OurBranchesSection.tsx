@@ -49,11 +49,11 @@ export const branchesData: BranchItem[] = [
     imageAlt: "Bhaddar Dental main branch in Gujrat",
     address: "City Hospital Road, Gujrat",
     phone: "03338472808",
-    phoneTel: "tel:0533606069",
+    phoneTel: "tel:03338472808",
     established: "Serving Since 1984",
     timings: [
       { label: "Mon – Sat", time: "16:00 – 21:00" },
-      { label: "Emergency", time: "24/7 Available for emergency cases" },
+      { label: "Emergency", time: "24/7 Available at City Hospital" },
     ],
     socialLinks: {
       instagram: "https://www.instagram.com/bhaddardental/",
