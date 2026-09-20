@@ -44,8 +44,7 @@ import { servicesData } from "../data/servicesData";
 const generatedHero = "/main.png";
 const suppliedHero = "/main.png";
 const generatedMark = "/logo.png";
-const mascotMark = "/logo.png";
-const suppliedChair = "/second.png";
+const suppliedChair = "/Consultation & Counseling.png";
 const suppliedTreatment = "/oral-surgery-hero.jpg";
 const suppliedCare = "/female-treatment.jpg";
 const suppliedClinic = "/second.png";
@@ -438,7 +437,7 @@ export default function Home() {
               </div>
 
               <div className="about__image-small animate-in" style={{ "--stagger": "140ms" } as CSSProperties}>
-                <img src={suppliedChair} alt="Bhaddar Dental modern clinical studio" />
+                <img src={suppliedChair} alt="Bhaddar Dental consultation and counseling" />
               </div>
 
               <div className="about__since-badge animate-in" style={{ "--stagger": "220ms" } as CSSProperties}>
