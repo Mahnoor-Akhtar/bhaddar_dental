@@ -1,5 +1,5 @@
-// Design philosophy: Warm Editorial Smile — use calm editorial composition, warm ivory surfaces, ink-teal hierarchy, sea-glass green actions, and plainspoken reassurance.
-import { useEffect, useState, type CSSProperties, type FormEvent } from "react";
+import { useEffect, useState, type CSSProperties } from "react";
+import { Link } from "wouter";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, EffectCoverflow, Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
@@ -34,10 +34,10 @@ import {
   X,
 } from "lucide-react";
 import { toast } from "sonner";
-
-// WhatsApp consultation contact link
-const WHATSAPP_NUMBER = "923374960842";
-const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hello Dr. Awais, I would like to book a dental appointment at Bhaddar Dental OMFS.")}`;
+import { AdditionalFacilities } from "../components/AdditionalFacilities";
+import { OralMaxillofacialSection } from "../components/OralMaxillofacialSection";
+import { OurBranchesSection } from "../components/OurBranchesSection";
+import { servicesData } from "../data/servicesData";
 
 // Public asset host can be overridden on Vercel with VITE_ASSET_BASE_URL.
 const assetBaseUrl = (import.meta.env.VITE_ASSET_BASE_URL || "https://brightsmile-4jarhlb3.manus.space").replace(/\/$/, "");
@@ -139,36 +139,23 @@ const teamMembers: TeamDoctor[] = [
 
 const heroSlides = [
   { src: generatedHero, label: "Expert Care", alt: "Bhaddar Dental OMFS clinic", title: "Transform Your Smile with", emphasis: "Expert Care 🦷", lede: "Bhaddar Dental OMFS — Because Your Smile Matters!" },
-  { src: suppliedClinic, label: "Jalalpur Jattan Studio", alt: "Modern dental office in Jalalpur Jattan", title: "Dentistry that respects", emphasis: "your time & comfort.", lede: "Circular Road, Near Butt Service Station, Chandni Chowk, Jalalpur Jattan 50700." },
+  { src: suppliedClinic, label: "Jalalpur Jattan Studio", alt: "Modern dental office in Jalalpur Jattan", title: "Dentistry that respects", emphasis: "your time & comfort.", lede: "Experienced care for healthier smiles and greater confidence." },
   { src: suppliedTreatment, label: "Clinical Precision", alt: "Dental professional performing procedure", title: "Clarity before", emphasis: "every procedure.", lede: "Modern techniques and honest explanations, shaped around what your smile needs." },
 ];
 
 const navItems = [
   { label: "About", href: "#about" },
   { label: "Services", href: "#services" },
+  { label: "Facilities", href: "#facilities" },
   { label: "Team", href: "#team" },
   { label: "Contact", href: "#contact" },
-  { label: "FAQ", href: "#faq" },
-];
-
-const serviceItems = [
-  { title: "Teeth Whitening", detail: "In-office or take-home whitening treatments planned around your smile goals.", icon: Sparkles, tag: "Smile brightness", image: treatmentWhitening },
-  { title: "Dental Fillings", detail: "Composite, tooth-colored fillings for cavities and everyday restorative care.", icon: Cross, tag: "Restorative care", image: treatmentFillings },
-  { title: "Root Canal Treatment (RCT)", detail: "Careful treatment for infected or damaged tooth pulp, with clear next steps.", icon: Syringe, tag: "Pain relief", image: treatmentRootCanal },
-  { title: "Tooth Extraction", detail: "Simple and surgical extractions delivered with thoughtful planning and aftercare.", icon: Stethoscope, tag: "Gentle treatment", image: treatmentExtraction },
-  { title: "Dental Implants", detail: "Permanent tooth replacement using titanium posts and a considered restorative plan.", icon: Cross, tag: "Long-term care", image: treatmentImplants },
-  { title: "Dentures", detail: "Full or partial removable tooth replacements designed for comfort and confidence.", icon: Users, tag: "Everyday confidence", image: treatmentDentures },
-  { title: "Braces / Orthodontics", detail: "Metal, ceramic, and traditional braces for thoughtful alignment planning.", icon: Cross, tag: "Alignment", image: treatmentBraces },
-  { title: "Invisalign / Clear Aligners", detail: "Invisible teeth-straightening trays for a discreet, modern treatment journey.", icon: Sparkles, tag: "Discreet care", image: generatedHero },
-  { title: "Scaling & Root Planing", detail: "Deep cleaning for gum disease and periodontal treatment planning.", icon: Stethoscope, tag: "Gum health", image: treatmentScaling },
-  { title: "Gum Disease Treatment", detail: "Focused care for gingivitis and periodontitis with clear follow-up guidance.", icon: HeartPulse, tag: "Periodontics", image: treatmentGumDisease },
 ];
 
 const galleryItems = [
-  { src: suppliedClinic, alt: "Bright dental treatment room with teal chairs", label: "The studio" },
-  { src: suppliedChair, alt: "Close view of a modern dental chair and equipment", label: "Thoughtful details" },
-  { src: suppliedCare, alt: "Dentist caring for a smiling young patient", label: "Gentle by design" },
-  { src: suppliedHero, alt: "Dental care detail with a soft sea-glass palette", label: "Sea-glass calm" },
+  { src: "/image1.png", alt: "Modern dental operatory unit with digital controls and treatment station", label: "Modern Dental Operatory" },
+  { src: "/image2.png", alt: "Private dental treatment room with computerized workstation", label: "Private Treatment Suite" },
+  { src: "/image3.png", alt: "Clinical treatment area with digital X-ray diagnostics and sterilization setup", label: "Diagnostic & Clinical Area" },
+  { src: "/image4.png", alt: "Advanced ergonomic dental chair with integrated sterile delivery system", label: "Ergonomic Patient Setup" },
 ];
 
 function scrollToSection(href: string) {
@@ -210,41 +197,6 @@ function TeamCard({ doctor }: { doctor: TeamDoctor }) {
             <span key={idx} className="team-card__specialty-item">{spec}</span>
           ))}
         </div>
-
-        <div className="team-card__socials" aria-label={`Connect with ${doctor.name}`}>
-          <a
-            href={doctor.linkedin}
-            className="team-card__social-btn"
-            aria-label={`${doctor.name} LinkedIn`}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Linkedin size={15} strokeWidth={1.75} />
-          </a>
-          <a
-            href={doctor.instagram}
-            className="team-card__social-btn"
-            aria-label={`${doctor.name} Instagram`}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Instagram size={15} strokeWidth={1.75} />
-          </a>
-          <a
-            href={doctor.email}
-            className="team-card__social-btn"
-            aria-label={`Email ${doctor.name}`}
-          >
-            <Mail size={15} strokeWidth={1.75} />
-          </a>
-          <a
-            href={doctor.phone}
-            className="team-card__social-btn"
-            aria-label={`Call ${doctor.name}`}
-          >
-            <Phone size={15} strokeWidth={1.75} />
-          </a>
-        </div>
       </div>
     </article>
   );
@@ -253,7 +205,6 @@ function TeamCard({ doctor }: { doctor: TeamDoctor }) {
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeHero, setActiveHero] = useState(0);
-  const [submitted, setSubmitted] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -291,12 +242,6 @@ export default function Home() {
     return () => observer.disconnect();
   }, []);
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    setSubmitted(true);
-    toast.success("Thanks — your request is ready for a personal follow-up.");
-  };
-
   return (
     <div className="site-shell">
       <header className={`site-header ${scrolled ? "site-header--scrolled" : ""}`}>
@@ -311,7 +256,9 @@ export default function Home() {
             ))}
           </nav>
           <div className="nav-actions">
-            <a className="button button--small button--teal" href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">Book an appointment <ArrowUpRight size={15} /></a>
+            <a className="button button--small button--teal nav-cta-clinics" href="#clinics">
+              OUR CLINICS <ArrowRight size={14} className="nav-cta-arrow" />
+            </a>
           </div>
           <button className="menu-toggle" onClick={() => setMenuOpen((value) => !value)} aria-label={menuOpen ? "Close menu" : "Open menu"} aria-expanded={menuOpen}>
             {menuOpen ? <X size={22} /> : <Menu size={22} />}
@@ -322,7 +269,9 @@ export default function Home() {
             {navItems.map((item) => (
               <a key={item.href} href={item.href} onClick={() => setMenuOpen(false)}>{item.label}<ArrowUpRight size={15} /></a>
             ))}
-            <a className="button button--teal" href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" onClick={() => setMenuOpen(false)}>Book an appointment <ArrowUpRight size={15} /></a>
+            <a className="button button--teal nav-cta-clinics" href="#clinics" onClick={() => setMenuOpen(false)}>
+              OUR CLINICS <ArrowRight size={15} />
+            </a>
           </div>
         )}
       </header>
@@ -344,8 +293,12 @@ export default function Home() {
               <h1>{heroSlides[activeHero].title} <em>{heroSlides[activeHero].emphasis}</em></h1>
               <p className="hero__lede">{heroSlides[activeHero].lede}</p>
               <div className="hero__actions">
-                <a className="button button--teal" href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">Book an appointment <ArrowUpRight size={17} /></a>
-                <a className="text-link" href="#services">View services <MoveRight size={17} /></a>
+                <a className="button button--teal" href="#services">
+                  View services <ArrowRight size={17} className="hero-btn-arrow" />
+                </a>
+                <a className="text-link" href="#clinics">
+                  Our Clinics <ArrowRight size={17} className="hero-link-arrow" />
+                </a>
               </div>
               <div className="hero__dots hero__dots--under-actions" role="tablist" aria-label="Hero image slides">
                 {heroSlides.map((slide, index) => (
@@ -461,14 +414,26 @@ export default function Home() {
                 grabCursor
                 coverflowEffect={{ rotate: 15, stretch: 0, depth: 100, modifier: 1, slideShadows: false }}
               >
-                {serviceItems.map((service) => (
-                  <SwiperSlide key={service.title} className="services-swiper__slide">
+                {servicesData.map((service) => (
+                  <SwiperSlide key={service.id} className="services-swiper__slide">
                     <article className="service-card">
-                      <div className="service-card__image"><img src={service.image} alt="" /></div>
+                      <div className="service-card__image">
+                        <img src={service.heroImage} alt={service.title} />
+                      </div>
                       <div className="service-card__body">
                         <h3>{service.title}</h3>
-                        <p>{service.detail}</p>
-                        <span className="service-card__tag">{service.tag}</span>
+                        <p>{service.shortDescription}</p>
+                        <div className="service-card__footer">
+                          <span className="service-card__tag">{service.tag}</span>
+                          <Link
+                            href={`/services/${service.slug}`}
+                            className="service-card__view-btn"
+                            aria-label={`View ${service.title} details`}
+                          >
+                            <span>View</span>
+                            <ArrowRight size={14} className="service-card__view-arrow" />
+                          </Link>
+                        </div>
                       </div>
                     </article>
                   </SwiperSlide>
@@ -481,6 +446,10 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        <OralMaxillofacialSection />
+
+        <AdditionalFacilities />
 
         <section id="team" className="team-section section-pad animate-in">
           <div className="container team-container">
@@ -527,8 +496,8 @@ export default function Home() {
 
         <section id="gallery" className="gallery section-pad section-pad--mist animate-in">
           <div className="container gallery__header">
-            <div><p className="eyebrow"><span className="eyebrow__rule" />A look around</p><h2>Designed for <em>room to breathe.</em></h2></div>
-            <p>Bright, considered spaces. Modern tools. Small details that make a difference before the appointment even begins.</p>
+            <div><p className="eyebrow"><span className="eyebrow__rule" />A look inside our clinic</p><h2>Designed for <em>room to breathe.</em></h2></div>
+            <p>A clean, comfortable environment equipped with modern dental units, digital diagnostics, and sterile treatment rooms for your care.</p>
           </div>
           <div className="container gallery__grid">
             {galleryItems.map((item, index) => (
@@ -539,19 +508,6 @@ export default function Home() {
             ))}
           </div>
         </section>
-
-        <section id="faq" className="faq section-pad section-pad--mist animate-in">
-          <div className="container faq__grid">
-            <div className="faq__intro"><p className="eyebrow"><span className="eyebrow__rule" />FAQ</p><h2>Questions,<br />answered <em>clearly.</em></h2><p className="faq__intro-copy">Find quick, helpful answers to common questions about your visit, treatments, and our services.</p><a className="faq__contact-card" href="#contact"><span className="faq__contact-icon"><Phone size={22} /></span><span><strong>Still have questions?</strong><small>Our team is here to help.</small><b>Contact us <ArrowRight size={16} /></b></span></a></div>
-            <div className="faq__list">
-              <details open><summary><span className="faq__summary-icon" aria-hidden="true" />What should I expect at my first visit?</summary><p>Your first visit includes a warm welcome, a comprehensive dental exam, digital X-rays if needed, and a personalized discussion of your oral health goals. We’ll create a treatment plan tailored to your needs.</p></details>
-              <details><summary><span className="faq__summary-icon" aria-hidden="true" />Will treatment be explained before it begins?</summary><p>Yes. We explain your options, timing, expected outcomes, and next steps clearly before treatment starts.</p></details>
-              <details><summary><span className="faq__summary-icon" aria-hidden="true" />Can I ask about discomfort or payment options?</summary><p>Absolutely. Bring every question to your consultation so the team can discuss comfort planning and available payment options.</p></details>
-              <details><summary><span className="faq__summary-icon" aria-hidden="true" />Do you offer emergency appointments?</summary><p>Contact the clinic as soon as possible and we’ll guide you to the most appropriate next step for urgent dental concerns.</p></details>
-              <details><summary><span className="faq__summary-icon" aria-hidden="true" />Do you accept dental insurance?</summary><p>Our team can review your insurance questions during your appointment request and explain what information is needed.</p></details>
-            </div>
-          </div>
-        </section>
         <section className="review-band section-pad animate-in">
           <div className="review-band__texture" aria-hidden="true" />
           <div className="container review-band__grid">
@@ -560,73 +516,18 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="appointment" className="appointment section-pad animate-in">
-          <div className="container appointment__grid">
-            <div className="appointment__intro">
-              <p className="eyebrow"><span className="eyebrow__rule" />Your next step</p>
-              <h2>Let's make the first appointment <em>the easy part.</em></h2>
-              <p className="body-copy">Tell us a little about what you need. A member of Dr. Awais's team will be in touch to find a time that works for you.</p>
-              <div className="appointment__contact-list">
-                <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer"><Phone size={17} /><span><small>Call / WhatsApp</small>+92 337 4960842</span></a>
-                <a href="mailto:contact@dentalcarebydrawais.com"><Mail size={17} /><span><small>Email us</small>contact@dentalcarebydrawais.com</span></a>
-                <span><MapPin size={17} /><span><small>Address</small>Circular Road, Near Butt Service Station, Chandni Chowk, Jalalpur Jattan 50700</span></span>
-              </div>
-            </div>
-            <div className="booking-card booking-card--whatsapp">
-              <div className="whatsapp-card__badge"><MessageCircle size={18} /><span>Direct WhatsApp Consultation</span></div>
-              <h3>Book your appointment instantly on WhatsApp</h3>
-              <p className="whatsapp-card__description">
-                Connect directly with Dr. Awais Farooq Ch & team to schedule your preferred day and time for consultation or treatment.
-              </p>
-              <div className="whatsapp-card__info-box">
-                <div className="whatsapp-card__info-item">
-                  <Clock3 size={18} />
-                  <div>
-                    <strong>Fast Response Time</strong>
-                    <small>Mon–Fri 09:00–20:00 & Sat 10:00–16:00</small>
-                  </div>
-                </div>
-                <div className="whatsapp-card__info-item">
-                  <ShieldCheck size={18} />
-                  <div>
-                    <strong>Direct & Confidential</strong>
-                    <small>Personalized dental guidance directly on WhatsApp</small>
-                  </div>
-                </div>
-              </div>
-              <a
-                href={WHATSAPP_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="button button--whatsapp button--full"
-              >
-                <MessageCircle size={22} />
-                <span>Book Appointment on WhatsApp</span>
-                <ArrowUpRight size={18} />
-              </a>
-              <p className="form-note"><ShieldCheck size={14} />Clicking opens WhatsApp directly on your phone or computer.</p>
-            </div>
-          </div>
-        </section>
-
-        <section id="contact" className="contact-strip animate-in">
-          <div className="container contact-strip__grid">
-            <div><span className="contact-strip__kicker">Visit Bhaddar Dental</span><strong>Circular Road, Near Butt Service Station<br />Chandni Chowk, Jalalpur Jattan 50700</strong></div>
-            <div><span className="contact-strip__kicker">Opening hours</span><strong>Mon–Fri / 9:00–20:00<br />Saturday / By appointment</strong></div>
-            <a className="contact-strip__map" href="#contact" onClick={() => toast.info("Circular Road, Near Butt Service Station, Chandni Chowk, Jalalpur Jattan 50700")}><Compass size={20} /><span>Open map<br /><small>Directions to clinic</small></span><ArrowUpRight size={16} /></a>
-          </div>
-        </section>
+        <OurBranchesSection />
       </main>
 
       <footer className="site-footer">
         <div className="site-footer__glow" aria-hidden="true" />
         <div className="container site-footer__cta">
           <div><p className="eyebrow"><span className="eyebrow__rule" />Your next comfortable visit</p><h2>Transform Your Smile with <em>Expert Care 🦷</em></h2><p>Bhaddar Dental OMFS — Because Your Smile Matters! Tell us what you need and we’ll help you find the right next step.</p></div>
-          <a className="button button--teal footer__cta-button" href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">Book an appointment <ArrowUpRight size={17} /></a>
+          <a className="button button--teal footer__cta-button" href="#clinics">Our Clinics <ArrowRight size={17} /></a>
         </div>
         <div className="container site-footer__grid">
           <div className="site-footer__brand-column"><a className="brand brand--footer" href="#top" aria-label="Bhaddar Dental OMFS home"><img src="/logo.png" alt="Bhaddar Dental OMFS Logo" className="brand__logo-img" /><span className="brand__wordmark">Bhaddar <span>Dental</span></span></a><p>Dentist & Dental Office — Because Your Smile Matters!</p><div className="footer-socials"><a href="mailto:contact@dentalcarebydrawais.com" aria-label="Email Dr. Awais"><Mail size={17} /></a><a href="#team" aria-label="Meet Dr. Awais & team"><Users size={17} /></a></div></div>
-          <div className="site-footer__column"><span className="site-footer__label">Explore</span><a href="#about">About clinic <ArrowUpRight size={13} /></a><a href="#services">Treatments <ArrowUpRight size={13} /></a><a href="#team">Our experts <ArrowUpRight size={13} /></a><a href="#faq">FAQs <ArrowUpRight size={13} /></a></div>
+          <div className="site-footer__column"><span className="site-footer__label">Explore</span><a href="#about">About clinic <ArrowUpRight size={13} /></a><a href="#services">Treatments <ArrowUpRight size={13} /></a><a href="#facilities">Facilities <ArrowUpRight size={13} /></a><a href="#team">Our experts <ArrowUpRight size={13} /></a><a href="#clinics">Our Clinics <ArrowUpRight size={13} /></a></div>
           <div className="site-footer__column"><span className="site-footer__label">Find us</span><span className="footer-detail"><MapPin size={16} />Circular Road, Near Butt Service Station<br />Chandni Chowk, Jalalpur Jattan 50700</span><a className="footer-detail" href="mailto:contact@dentalcarebydrawais.com"><Mail size={16} />contact@dentalcarebydrawais.com</a></div>
           <div className="site-footer__column"><span className="site-footer__label">Clinic hours</span><span className="footer-hours"><b>Mon — Fri</b><span>09:00 — 20:00</span></span><span className="footer-hours"><b>Saturday</b><span>10:00 — 16:00</span></span><span className="footer-hours footer-hours--muted"><b>Sunday</b><span>By appointment</span></span></div>
         </div>
