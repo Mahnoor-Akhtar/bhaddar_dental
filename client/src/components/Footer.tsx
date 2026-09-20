@@ -4,6 +4,47 @@ import {
   ChevronRight,
 } from "lucide-react";
 
+function ToothLogo({ size = 42 }: { size?: number }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 100 100"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className="custom-footer__tooth-logo"
+    >
+      <defs>
+        <linearGradient id="tooth-sheen" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#FFFFFF" />
+          <stop offset="35%" stopColor="#E0F7FA" />
+          <stop offset="70%" stopColor="#00E5FF" />
+          <stop offset="100%" stopColor="#00838F" />
+        </linearGradient>
+        <linearGradient id="tooth-inner-glow" x1="100%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stopColor="#80DEEA" stopOpacity="0.9" />
+          <stop offset="100%" stopColor="#006064" stopOpacity="0.6" />
+        </linearGradient>
+        <filter id="logo-drop" x="-20%" y="-20%" width="140%" height="140%">
+          <feDropShadow dx="0" dy="3" stdDeviation="5" floodColor="#00E5FF" floodOpacity="0.45" />
+        </filter>
+      </defs>
+      {/* Outer contoured Tooth Silhouette */}
+      <path
+        d="M50 10 C36 10 20 18 14 31 C8 44 11 62 19 74 C24 81 32 84 37 74 C42 63 44 50 50 50 C56 50 58 63 63 74 C68 84 76 81 81 74 C89 62 92 44 86 31 C80 18 64 10 50 10 Z"
+        fill="url(#tooth-sheen)"
+        filter="url(#logo-drop)"
+      />
+      {/* 3D Depth Wave Inside Tooth */}
+      <path
+        d="M38 21 C45 15 55 15 62 21 C68 26 73 36 70 48 C66 60 58 70 54 74 C52 76 50 74 50 72 C50 62 53 49 50 44 C47 49 50 62 50 72 C50 74 48 76 46 74 C42 70 34 60 30 48 C27 36 32 26 38 21 Z"
+        fill="url(#tooth-inner-glow)"
+      />
+      <circle cx="34" cy="28" r="4" fill="#FFFFFF" opacity="0.8" />
+    </svg>
+  );
+}
+
 export function Footer() {
   return (
     <footer className="custom-footer" id="contact">
@@ -58,147 +99,142 @@ export function Footer() {
         </div>
       </div>
 
+      {/* MAIN EXACT REFERENCE FOOTER SECTION */}
       <div className="container custom-footer__main">
-        {/* MOBILE HEADER */}
-        <div className="custom-footer__mobile-brand">
-          <div className="custom-footer__mobile-brand-top">
-            <a href="/#top" className="custom-footer__brand-link" aria-label="Bhaddar Dental home">
-              <img src="/logo.png" alt="Bhaddar Dental Logo" className="custom-footer__brand-logo" />
-              <div className="custom-footer__brand-text">
-                <span className="custom-footer__brand-name">
-                  Bhaddar <span>Dental</span>
-                </span>
-                <span className="custom-footer__brand-tagline">
-                  HEALTHY SMILES BRIGHTER LIVES
-                </span>
-              </div>
-            </a>
-
-            <div className="custom-footer__mobile-script">
-              <span>Healthy</span>
-              <span>Smiles</span>
-              <span>Near You</span>
-              <svg
-                className="custom-footer__mobile-script-underline"
-                viewBox="0 0 70 12"
-                fill="none"
-                aria-hidden="true"
-              >
-                <path
-                  d="M2 9C20 3 45 4 68 8"
-                  stroke="#92D2D6"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                />
-              </svg>
-            </div>
-          </div>
-
-          <p className="custom-footer__mobile-bio">
-            Quality dental care with advanced technology and a compassionate approach. Your smile is our priority.
-          </p>
+        {/* Background Large Glowing Tooth Watermark on the Right */}
+        <div className="custom-footer__watermark-wrap" aria-hidden="true">
+          <svg
+            className="custom-footer__giant-tooth"
+            viewBox="0 0 420 480"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M210 35 C150 35 85 68 60 120 C35 172 45 245 78 295 C98 322 132 335 155 295 C175 250 185 200 210 200 C235 200 245 250 265 295 C288 335 322 322 342 295 C375 245 385 172 360 120 C335 68 270 35 210 35 Z"
+              stroke="url(#giant-tooth-glow)"
+              strokeWidth="14"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M160 80 C190 55 230 55 260 80 C285 102 305 142 292 190 C276 238 244 278 226 295 C218 303 210 295 210 286 C210 246 222 195 210 175 C198 195 210 246 210 286 C210 295 202 303 194 295 C176 278 144 238 128 190 C115 142 135 102 160 80 Z"
+              stroke="url(#giant-tooth-glow-inner)"
+              strokeWidth="10"
+              strokeLinecap="round"
+            />
+            <defs>
+              <linearGradient id="giant-tooth-glow" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="#00E5FF" stopOpacity="0.32" />
+                <stop offset="60%" stopColor="#00838F" stopOpacity="0.18" />
+                <stop offset="100%" stopColor="#004D40" stopOpacity="0.04" />
+              </linearGradient>
+              <linearGradient id="giant-tooth-glow-inner" x1="100%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stopColor="#80DEEA" stopOpacity="0.22" />
+                <stop offset="100%" stopColor="#004D40" stopOpacity="0.02" />
+              </linearGradient>
+            </defs>
+          </svg>
         </div>
 
-        {/* MAIN 2-COLUMN GRID */}
-        <div className="custom-footer__grid">
-          {/* Col 1: Desktop Brand Info */}
-          <div className="custom-footer__col custom-footer__col--brand">
-            <a href="/#top" className="custom-footer__brand-link" aria-label="Bhaddar Dental home">
-              <img src="/logo.png" alt="Bhaddar Dental Logo" className="custom-footer__brand-logo" />
-              <div className="custom-footer__brand-text">
-                <span className="custom-footer__brand-name">
-                  Bhaddar <span>Dental</span>
-                </span>
+        <div className="custom-footer__grid custom-footer__grid--ref">
+          {/* Left Column: Brand & Bio */}
+          <div className="custom-footer__col custom-footer__col--ref-brand">
+            <a href="/#top" className="custom-footer__brand-header" aria-label="Bhaddar Dental home">
+              <ToothLogo size={42} />
+              <div className="custom-footer__brand-title">
+                <span className="custom-footer__brand-word-white">Bhaddar</span>{" "}
+                <span className="custom-footer__brand-word-cyan">Dental</span>
               </div>
             </a>
-            <p className="custom-footer__col-tagline">
-              Dentist &amp; Dental Office — Because Your Smile Matters!
-            </p>
-            <p className="custom-footer__col-desc">
+
+            <div className="custom-footer__headline-block">
+              <h3 className="custom-footer__headline-white">Dentist &amp; Dental Office —</h3>
+              <h3 className="custom-footer__headline-cyan">Because Your Smile Matters!</h3>
+            </div>
+
+            <p className="custom-footer__bio-text">
               Providing compassionate, high-quality dental care with advanced technology for healthier smiles and brighter lives.
             </p>
-            <div className="custom-footer__brand-signature">
-              <span className="custom-footer__script-text">A Healthier Smile A Brighter You</span>
-              <div className="custom-footer__signature-line" />
+
+            <div className="custom-footer__signature-block">
+              <span className="custom-footer__signature-line-text">A Healthier Smile A Brighter You</span>
+              <div className="custom-footer__signature-cyan-bar" />
             </div>
           </div>
 
-          {/* Col 2: EXPLORE / QUICK LINKS */}
-          <div className="custom-footer__col custom-footer__col--links">
-            <div className="custom-footer__heading">
-              <span className="custom-footer__heading-text custom-footer__heading-text--desktop">EXPLORE</span>
-              <span className="custom-footer__heading-text custom-footer__heading-text--mobile">QUICK LINKS</span>
-              <span className="custom-footer__heading-underline" />
+          {/* Right Column: Explore & Quick Links */}
+          <div className="custom-footer__col custom-footer__col--ref-links">
+            <div className="custom-footer__ref-heading">
+              <span className="custom-footer__ref-kicker">EXPLORE</span>
+              <h4 className="custom-footer__ref-title">QUICK LINKS</h4>
+              <div className="custom-footer__ref-underline" />
             </div>
-            <ul className="custom-footer__nav-list">
+
+            <ul className="custom-footer__ref-nav-list">
               <li>
-                <a href="/#about" className="custom-footer__nav-link">
+                <a href="/#about" className="custom-footer__ref-link">
                   <span>About Clinic</span>
-                  <ChevronRight size={15} className="custom-footer__nav-arrow" />
+                  <ChevronRight size={16} className="custom-footer__ref-chevron" />
                 </a>
               </li>
               <li>
-                <a href="/#services" className="custom-footer__nav-link">
+                <a href="/#services" className="custom-footer__ref-link">
                   <span>Treatments</span>
-                  <ChevronRight size={15} className="custom-footer__nav-arrow" />
+                  <ChevronRight size={16} className="custom-footer__ref-chevron" />
                 </a>
               </li>
               <li>
-                <a href="/#facilities" className="custom-footer__nav-link">
+                <a href="/#facilities" className="custom-footer__ref-link">
                   <span>Facilities</span>
-                  <ChevronRight size={15} className="custom-footer__nav-arrow" />
+                  <ChevronRight size={16} className="custom-footer__ref-chevron" />
                 </a>
               </li>
               <li>
-                <a href="/#team" className="custom-footer__nav-link">
+                <a href="/#team" className="custom-footer__ref-link">
                   <span>Our Experts</span>
-                  <ChevronRight size={15} className="custom-footer__nav-arrow" />
+                  <ChevronRight size={16} className="custom-footer__ref-chevron" />
                 </a>
               </li>
               <li>
-                <a href="/#clinics" className="custom-footer__nav-link">
+                <a href="/#clinics" className="custom-footer__ref-link">
                   <span>Our Clinics</span>
-                  <ChevronRight size={15} className="custom-footer__nav-arrow" />
+                  <ChevronRight size={16} className="custom-footer__ref-chevron" />
                 </a>
               </li>
               <li>
-                <a href="/#contact" className="custom-footer__nav-link custom-footer__nav-link--extra">
+                <a href="/#contact" className="custom-footer__ref-link">
                   <span>Contact Us</span>
-                  <ChevronRight size={15} className="custom-footer__nav-arrow" />
+                  <ChevronRight size={16} className="custom-footer__ref-chevron" />
                 </a>
               </li>
             </ul>
           </div>
         </div>
-
-        {/* SIGNATURE SCRIPT (Mobile and Web Bottom Center) */}
-        <div className="custom-footer__signature-banner">
-          <p className="custom-footer__script-quote">A Healthier Smile A Brighter You</p>
-          <div className="custom-footer__script-quote-bar" />
-        </div>
       </div>
 
-      {/* BOTTOM FLOWING WAVE GRAPHIC */}
+      {/* BOTTOM FLOWING GLOWING WAVE GRAPHIC */}
       <div className="custom-footer__waves" aria-hidden="true">
         <svg viewBox="0 0 1440 120" preserveAspectRatio="none" fill="none">
           <path
-            d="M0,45 C280,100 520,10 820,70 C1100,120 1320,30 1440,55 L1440,120 L0,120 Z"
+            d="M0,50 C280,110 520,15 820,75 C1100,125 1320,35 1440,60 L1440,120 L0,120 Z"
             fill="url(#footer-wave-grad-1)"
-            opacity="0.35"
+            opacity="0.4"
           />
           <path
-            d="M0,80 C360,20 680,110 1020,40 C1240,0 1380,85 1440,75 L1440,120 L0,120 Z"
+            d="M0,85 C360,25 680,115 1020,45 C1240,5 1380,90 1440,80 L1440,120 L0,120 Z"
             fill="url(#footer-wave-grad-2)"
-            opacity="0.5"
+            opacity="0.6"
           />
           <defs>
             <linearGradient id="footer-wave-grad-1" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#0E6148" />
-              <stop offset="100%" stopColor="#01263B" />
+              <stop offset="0%" stopColor="#004D40" />
+              <stop offset="50%" stopColor="#00838F" />
+              <stop offset="100%" stopColor="#001824" />
             </linearGradient>
             <linearGradient id="footer-wave-grad-2" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#92D2D6" />
-              <stop offset="100%" stopColor="#114F7A" />
+              <stop offset="0%" stopColor="#00E5FF" stopOpacity="0.8" />
+              <stop offset="50%" stopColor="#0097A7" stopOpacity="0.5" />
+              <stop offset="100%" stopColor="#001F29" stopOpacity="0.9" />
             </linearGradient>
           </defs>
         </svg>
@@ -208,14 +244,14 @@ export function Footer() {
       <div className="custom-footer__bottom-bar">
         <div className="container custom-footer__bottom-inner">
           <span className="custom-footer__copyright">
-            © 2024 Bhaddar Dental. All Rights Reserved.
+            © {new Date().getFullYear()} Bhaddar Dental. All Rights Reserved.
           </span>
           <div className="custom-footer__legal-links">
-            <a href="#top" className="custom-footer__legal-link">Privacy Policy</a>
+            <a href="/#top" className="custom-footer__legal-link">Privacy Policy</a>
             <span className="custom-footer__legal-sep">|</span>
-            <a href="#top" className="custom-footer__legal-link">Terms of Service</a>
+            <a href="/#top" className="custom-footer__legal-link">Terms of Service</a>
             <span className="custom-footer__legal-sep">|</span>
-            <a href="#top" className="custom-footer__legal-link">Sitemap</a>
+            <a href="/#clinics" className="custom-footer__legal-link">Our Clinics</a>
           </div>
         </div>
       </div>
