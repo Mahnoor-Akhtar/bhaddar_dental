@@ -98,6 +98,18 @@ const teamMembers: TeamDoctor[] = [
     phone: "tel:+923374960842",
   },
   {
+    name: "Dr. Uzma Ismail",
+    role: "Team Member",
+    badgeType: "member",
+    qualifications: "BDS, MSc Orthodontics",
+    specialties: ["Specialist Fixed Braces"],
+    image: "/Uzma.png",
+    linkedin: "https://linkedin.com",
+    instagram: "https://instagram.com",
+    email: "mailto:contact@dentalcarebydrawais.com",
+    phone: "tel:+923374960842",
+  },
+  {
     name: "Dr. Awais Farooq Ch",
     role: "Team Member",
     badgeType: "member",
@@ -116,18 +128,6 @@ const teamMembers: TeamDoctor[] = [
     qualifications: "BDS, FCPS (Oral and Maxillofacial Surgery), CHPE",
     specialties: ["Oral & Maxillofacial Surgeon"],
     image: "/Umaira.jpeg",
-    linkedin: "https://linkedin.com",
-    instagram: "https://instagram.com",
-    email: "mailto:contact@dentalcarebydrawais.com",
-    phone: "tel:+923374960842",
-  },
-  {
-    name: "Dr. Uzma Ismail",
-    role: "Team Member",
-    badgeType: "member",
-    qualifications: "BDS, MSc Orthodontics",
-    specialties: ["Specialist Fixed Braces"],
-    image: "/Uzma.png",
     linkedin: "https://linkedin.com",
     instagram: "https://instagram.com",
     email: "mailto:contact@dentalcarebydrawais.com",
@@ -203,9 +203,11 @@ function TeamCard({ doctor }: { doctor: TeamDoctor }) {
       </div>
 
       <div className="team-card__badge-wrapper">
-        <span className={`team-card__badge team-card__badge--${doctor.badgeType}`}>
-          {doctor.role}
-        </span>
+        {doctor.badgeType !== "member" && (
+          <span className={`team-card__badge team-card__badge--${doctor.badgeType}`}>
+            {doctor.role}
+          </span>
+        )}
       </div>
 
       <div className="team-card__body">
