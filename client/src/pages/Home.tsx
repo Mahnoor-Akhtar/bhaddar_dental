@@ -17,6 +17,7 @@ import {
   Clock3,
   Compass,
   Cross,
+  Heart,
   HeartPulse,
   Instagram,
   Linkedin,
@@ -27,7 +28,7 @@ import {
   MoveRight,
   Phone,
   ShieldCheck,
-  Sparkles,
+  Star,
   Stethoscope,
   Syringe,
   Users,
@@ -38,6 +39,7 @@ import { AdditionalFacilities } from "../components/AdditionalFacilities";
 import { Footer } from "../components/Footer";
 import { OralMaxillofacialSection } from "../components/OralMaxillofacialSection";
 import { OurBranchesSection } from "../components/OurBranchesSection";
+import { ProfessionalAssociationSection } from "../components/ProfessionalAssociationSection";
 import { servicesData } from "../data/servicesData";
 
 // Local self-hosted public assets for 100% reliable loading on all devices
@@ -91,7 +93,7 @@ const teamMembers: TeamDoctor[] = [
     badgeType: "ceo",
     qualifications: "BDS (UOL) MDS OMFS (PIMS)",
     specialties: ["Oral & Maxillofacial Surgeon"],
-    image: "/CEO.jpeg",
+    image: "/CEO.png",
     linkedin: "https://linkedin.com",
     instagram: "https://instagram.com",
     email: "mailto:contact@dentalcarebydrawais.com",
@@ -593,11 +595,68 @@ export default function Home() {
         </section>
         <section className="review-band section-pad animate-in">
           <div className="review-band__texture" aria-hidden="true" />
-          <div className="container review-band__grid">
-            <div className="review-band__copy"><p className="eyebrow eyebrow--light"><span className="eyebrow__rule" />Patient trust, responsibly handled</p><h2>Good care should feel <em>easy to talk about.</em></h2><p>Verified patient feedback belongs here. Connect your Google review source or add approved comments when you are ready — never fill the space with made-up words.</p></div>
-            <div className="review-placeholder"><div className="review-placeholder__mark"><Sparkles size={18} /></div><span className="review-placeholder__label">Reviews coming from a verified source</span><strong>Your patients' real words,<br />when you are ready to share them.</strong><a className="button button--ivory button--outline" href="#contact">Connect review source <ArrowUpRight size={15} /></a></div>
+          <div className="container review-band__layout">
+            <div className="review-band__main">
+              <p className="eyebrow eyebrow--light">
+                <span className="eyebrow__rule" />
+                OUR PATIENTS, OUR PRIDE
+              </p>
+              <h2 className="review-band__title">
+                Our patients’<br />
+                <em>satisfaction</em> says it all.
+              </h2>
+              <p className="review-band__desc">
+                We are grateful for the trust our patients place in us. Their positive experiences and kind words motivate us to keep delivering the best dental care, every day.
+              </p>
+
+              <div className="review-band__stats">
+                <div className="review-stat-item">
+                  <div className="review-stat-item__icon">
+                    <Users size={18} />
+                  </div>
+                  <div className="review-stat-item__content">
+                    <span className="review-stat-item__value">50K+</span>
+                    <span className="review-stat-item__label">Happy Patients</span>
+                  </div>
+                </div>
+
+                <div className="review-stat-divider" aria-hidden="true" />
+
+                <div className="review-stat-item">
+                  <div className="review-stat-item__icon">
+                    <Star size={18} fill="currentColor" />
+                  </div>
+                  <div className="review-stat-item__content">
+                    <span className="review-stat-item__value">4.9/5</span>
+                    <span className="review-stat-item__label">Average Rating</span>
+                  </div>
+                </div>
+
+                <div className="review-stat-divider" aria-hidden="true" />
+
+                <div className="review-stat-item">
+                  <div className="review-stat-item__icon">
+                    <Heart size={18} fill="currentColor" />
+                  </div>
+                  <div className="review-stat-item__content">
+                    <span className="review-stat-item__value">98%</span>
+                    <span className="review-stat-item__label">Would Recommend</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="review-band__aside">
+              <div className="review-band__tagline">
+                <span>HEALTHY SMILES</span>
+                <span>BRIGHTER TOMORROWS</span>
+              </div>
+              <div className="review-band__tagline-rule" />
+            </div>
           </div>
         </section>
+
+        <ProfessionalAssociationSection />
 
         <OurBranchesSection />
       </main>
