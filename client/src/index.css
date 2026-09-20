@@ -3398,11 +3398,11 @@ a.footer-detail:hover { color: #FFFFFF; }
   text-decoration: underline;
 }
 
-/* Social & Location Links */
+/* Social & Location Icon Links */
 .branch-card__socials-section {
   display: flex;
   flex-direction: column;
-  gap: 9px;
+  gap: 10px;
 }
 
 .branch-card__socials-heading {
@@ -3413,83 +3413,81 @@ a.footer-detail:hover { color: #FFFFFF; }
   color: #648ba6;
 }
 
-.branch-card__socials-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-  gap: 9px;
-}
-
-.branch-social-link {
+.branch-card__socials-row {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 9px 12px;
+  gap: 12px;
+}
+
+.branch-icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
   border-radius: 12px;
   background: #FFFFFF;
-  border: 1px solid rgba(7, 59, 102, 0.08);
-  box-shadow: 0 2px 6px rgba(7, 59, 102, 0.03);
-  transition: transform 200ms ease, border-color 200ms ease, box-shadow 200ms ease, background 200ms ease;
+  border: 1px solid rgba(7, 59, 102, 0.1);
+  box-shadow: 0 2px 8px rgba(7, 59, 102, 0.04);
+  transition: transform 220ms cubic-bezier(0.23, 1, 0.32, 1),
+              box-shadow 220ms ease,
+              border-color 220ms ease,
+              background-color 220ms ease,
+              color 220ms ease;
   text-decoration: none;
 }
 
-.branch-social-link:hover {
-  transform: translateY(-2px);
-  border-color: rgba(2, 132, 199, 0.35);
-  box-shadow: 0 6px 14px rgba(7, 59, 102, 0.08);
-  background: #FBFDFF;
+.branch-icon-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 18px rgba(7, 59, 102, 0.12);
 }
 
-.branch-social-link__icon-box {
-  width: 28px;
-  height: 28px;
-  border-radius: 6px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-.branch-social-link--instagram .branch-social-link__icon-box {
-  background: rgba(225, 48, 108, 0.1);
+.branch-icon-btn--instagram {
   color: #e1306c;
+  background: rgba(225, 48, 108, 0.07);
+  border-color: rgba(225, 48, 108, 0.18);
 }
 
-.branch-social-link--facebook .branch-social-link__icon-box {
-  background: rgba(24, 119, 242, 0.1);
+.branch-icon-btn--instagram:hover {
+  background: #e1306c;
+  color: #FFFFFF;
+  border-color: #e1306c;
+}
+
+.branch-icon-btn--facebook {
   color: #1877f2;
+  background: rgba(24, 119, 242, 0.07);
+  border-color: rgba(24, 119, 242, 0.18);
 }
 
-.branch-social-link--tiktok .branch-social-link__icon-box {
-  background: rgba(0, 0, 0, 0.08);
-  color: #111827;
+.branch-icon-btn--facebook:hover {
+  background: #1877f2;
+  color: #FFFFFF;
+  border-color: #1877f2;
 }
 
-.branch-social-link--maps .branch-social-link__icon-box {
-  background: rgba(2, 132, 199, 0.1);
-  color: #0284c7;
-}
-
-.branch-social-link__content {
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
-}
-
-.branch-social-link__platform {
-  font-size: 10px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: #648ba6;
-}
-
-.branch-social-link__handle {
-  font-size: 12px;
-  font-weight: 700;
+.branch-icon-btn--tiktok {
   color: #073B66;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
+  background: rgba(7, 59, 102, 0.07);
+  border-color: rgba(7, 59, 102, 0.18);
+}
+
+.branch-icon-btn--tiktok:hover {
+  background: #073B66;
+  color: #FFFFFF;
+  border-color: #073B66;
+}
+
+.branch-icon-btn--maps {
+  color: #0284c7;
+  background: rgba(2, 132, 199, 0.07);
+  border-color: rgba(2, 132, 199, 0.18);
+}
+
+.branch-icon-btn--maps:hover {
+  background: #0284c7;
+  color: #FFFFFF;
+  border-color: #0284c7;
 }
 
 /* Card CTA */
@@ -3546,8 +3544,8 @@ a.footer-detail:hover { color: #FFFFFF; }
 }
 
 @media (max-width: 600px) {
-  .branch-card__socials-grid {
-    grid-template-columns: 1fr 1fr;
+  .branch-card__socials-row {
+    gap: 10px;
   }
 
   .branch-card__header {
@@ -3561,7 +3559,7 @@ a.footer-detail:hover { color: #FFFFFF; }
   .branch-card__image,
   .branch-card__cta,
   .branch-card__cta-arrow,
-  .branch-social-link {
+  .branch-icon-btn {
     transition: none !important;
     transform: none !important;
   }

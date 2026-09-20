@@ -173,28 +173,21 @@ export function BranchCard({ branch, index }: BranchCardProps) {
           </div>
         </div>
 
-        {/* Social and Location Links */}
+        {/* Social and Location Icon Links */}
         <div className="branch-card__socials-section">
           <span className="branch-card__socials-heading">Connect &amp; Navigate</span>
-          <div className="branch-card__socials-grid">
+          <div className="branch-card__socials-row">
             {/* Instagram */}
             {branch.socialLinks.instagram && (
               <a
                 href={branch.socialLinks.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="branch-social-link branch-social-link--instagram"
+                className="branch-icon-btn branch-icon-btn--instagram"
                 aria-label={`${branch.name} Instagram`}
+                title="Instagram (@bhaddardental)"
               >
-                <div className="branch-social-link__icon-box">
-                  <Instagram size={17} />
-                </div>
-                <div className="branch-social-link__content">
-                  <span className="branch-social-link__platform">Instagram</span>
-                  <span className="branch-social-link__handle">
-                    {isMain ? "@bhaddardental" : "@dentalcarebydrawais"}
-                  </span>
-                </div>
+                <Instagram size={20} />
               </a>
             )}
 
@@ -204,16 +197,11 @@ export function BranchCard({ branch, index }: BranchCardProps) {
                 href={branch.socialLinks.facebook}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="branch-social-link branch-social-link--facebook"
+                className="branch-icon-btn branch-icon-btn--facebook"
                 aria-label={`${branch.name} Facebook`}
+                title="Facebook (Dental Care By Dr Awais)"
               >
-                <div className="branch-social-link__icon-box">
-                  <Facebook size={17} />
-                </div>
-                <div className="branch-social-link__content">
-                  <span className="branch-social-link__platform">Facebook</span>
-                  <span className="branch-social-link__handle">Dental Care By Dr Awais</span>
-                </div>
+                <Facebook size={20} />
               </a>
             )}
 
@@ -223,16 +211,11 @@ export function BranchCard({ branch, index }: BranchCardProps) {
                 href={branch.socialLinks.tiktok}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="branch-social-link branch-social-link--tiktok"
+                className="branch-icon-btn branch-icon-btn--tiktok"
                 aria-label={`${branch.name} TikTok`}
+                title="TikTok (@dentalcarebydrawais)"
               >
-                <div className="branch-social-link__icon-box">
-                  <TikTokIcon size={17} />
-                </div>
-                <div className="branch-social-link__content">
-                  <span className="branch-social-link__platform">TikTok</span>
-                  <span className="branch-social-link__handle">@dentalcarebydrawais</span>
-                </div>
+                <TikTokIcon size={20} />
               </a>
             )}
 
@@ -242,16 +225,11 @@ export function BranchCard({ branch, index }: BranchCardProps) {
                 href={branch.socialLinks.maps}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="branch-social-link branch-social-link--maps"
+                className="branch-icon-btn branch-icon-btn--maps"
                 aria-label={`${branch.name} Google Maps Location`}
+                title="View on Google Maps"
               >
-                <div className="branch-social-link__icon-box">
-                  <Compass size={17} />
-                </div>
-                <div className="branch-social-link__content">
-                  <span className="branch-social-link__platform">Location</span>
-                  <span className="branch-social-link__handle">View on Maps</span>
-                </div>
+                <Compass size={20} />
               </a>
             )}
           </div>
