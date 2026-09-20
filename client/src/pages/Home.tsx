@@ -184,6 +184,7 @@ function scrollToSection(href: string) {
 
 function TeamCard({ doctor }: { doctor: TeamDoctor }) {
   const isDrAwais = doctor.name.toLowerCase().includes("awais");
+  const isDrUmair = doctor.name.toLowerCase().includes("umair");
 
   return (
     <article className="team-card">
@@ -191,7 +192,7 @@ function TeamCard({ doctor }: { doctor: TeamDoctor }) {
         <img
           src={doctor.image}
           alt={doctor.name}
-          className={`team-card__img ${isDrAwais ? "team-card__img--top" : ""}`}
+          className={`team-card__img ${isDrAwais ? "team-card__img--top" : ""} ${isDrUmair ? "team-card__img--umair" : ""}`}
           loading="lazy"
         />
         <div className="team-card__wave" aria-hidden="true">

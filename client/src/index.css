@@ -1158,12 +1158,24 @@ body { min-width: 320px; overflow-x: hidden; }
   box-sizing: border-box;
 }
 
+.team-card__img--umair {
+  object-position: center 4% !important;
+  transform: scale(0.95) !important;
+  transform-origin: center top !important;
+  padding-top: 4px;
+  box-sizing: border-box;
+}
+
 .team-card:hover .team-card__img {
   transform: scale(1.14);
 }
 
 .team-card:hover .team-card__img--top {
   transform: scale(1.02) !important;
+}
+
+.team-card:hover .team-card__img--umair {
+  transform: scale(1.0) !important;
 }
 
 /* Subtle bottom wave shape overlay on image */
