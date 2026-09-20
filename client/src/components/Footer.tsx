@@ -46,7 +46,7 @@ export function Footer() {
                   className="custom-footer-cta__tooth-watermark"
                   viewBox="0 0 100 100"
                   fill="none"
-                  stroke="rgba(142, 214, 255, 0.45)"
+                  stroke="rgba(146, 210, 214, 0.45)"
                   strokeWidth="2.5"
                   aria-hidden="true"
                 >
@@ -90,7 +90,7 @@ export function Footer() {
               >
                 <path
                   d="M2 9C20 3 45 4 68 8"
-                  stroke="#38bdf8"
+                  stroke="#92D2D6"
                   strokeWidth="2"
                   strokeLinecap="round"
                 />
@@ -357,12 +357,12 @@ export function Footer() {
           />
           <defs>
             <linearGradient id="footer-wave-grad-1" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#0284c7" />
-              <stop offset="100%" stopColor="#082f49" />
+              <stop offset="0%" stopColor="#0E6148" />
+              <stop offset="100%" stopColor="#01263B" />
             </linearGradient>
             <linearGradient id="footer-wave-grad-2" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#38bdf8" />
-              <stop offset="100%" stopColor="#0369a1" />
+              <stop offset="0%" stopColor="#92D2D6" />
+              <stop offset="100%" stopColor="#114F7A" />
             </linearGradient>
           </defs>
         </svg>

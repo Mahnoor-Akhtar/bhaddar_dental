@@ -431,7 +431,7 @@ export default function Home() {
                 <span>Brighter</span>
                 <span>Futures</span>
                 <svg className="about__script-swoosh" viewBox="0 0 110 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M5 16C35 24 75 22 105 6" stroke="#60a5fa" strokeWidth="2.2" strokeLinecap="round" />
+                  <path d="M5 16C35 24 75 22 105 6" stroke="#73ADC0" strokeWidth="2.2" strokeLinecap="round" />
                 </svg>
               </div>
 
@@ -552,7 +552,7 @@ export default function Home() {
                 <span>Healthy Smiles,</span>
                 <span>Happier Lives</span>
                 <svg className="team-script-swoosh" viewBox="0 0 160 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M5 18C45 28 115 28 155 8" stroke="#8ED6FF" strokeWidth="2.5" strokeLinecap="round" />
+                  <path d="M5 18C45 28 115 28 155 8" stroke="#73ADC0" strokeWidth="2.5" strokeLinecap="round" />
                 </svg>
               </div>
             </div>

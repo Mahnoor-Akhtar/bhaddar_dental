@@ -160,7 +160,7 @@ export function AdditionalFacilities() {
             >
               <path
                 d="M4 16C40 26 100 24 135 6"
-                stroke="#60a5fa"
+                stroke="#73ADC0"
                 strokeWidth="2.2"
                 strokeLinecap="round"
               />

@@ -56,16 +56,16 @@ export function OralMaxillofacialSection() {
         >
           <path
             d="M50 300 C 300 100, 800 500, 1150 200"
-            stroke="rgba(56, 189, 248, 0.18)"
+            stroke="rgba(146, 210, 214, 0.28)"
             strokeWidth="1.5"
             strokeDasharray="4 8"
           />
           <path
             d="M200 450 C 500 250, 900 550, 1180 350"
-            stroke="rgba(2, 132, 199, 0.12)"
+            stroke="rgba(14, 97, 72, 0.18)"
             strokeWidth="1.5"
           />
-          <circle cx="1080" cy="180" r="7" fill="#0284c7" />
+          <circle cx="1080" cy="180" r="7" fill="#0E6148" />
         </svg>
       </div>
 
@@ -192,7 +192,7 @@ export function OralMaxillofacialSection() {
               >
                 <path
                   d="M4 16C40 26 100 24 135 6"
-                  stroke="#38bdf8"
+                  stroke="#73ADC0"
                   strokeWidth="2.2"
                   strokeLinecap="round"
                 />

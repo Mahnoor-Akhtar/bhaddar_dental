@@ -269,11 +269,11 @@ export function OurBranchesSection() {
         >
           <path
             d="M80 280 C 350 120, 850 480, 1120 220"
-            stroke="rgba(56, 189, 248, 0.16)"
+            stroke="rgba(146, 210, 214, 0.28)"
             strokeWidth="1.5"
             strokeDasharray="4 8"
           />
-          <circle cx="1060" cy="200" r="6" fill="#38bdf8" fillOpacity="0.4" />
+          <circle cx="1060" cy="200" r="6" fill="#92D2D6" fillOpacity="0.5" />
         </svg>
       </div>
 
@@ -307,7 +307,7 @@ export function OurBranchesSection() {
             >
               <path
                 d="M4 16C40 26 100 24 135 6"
-                stroke="#38bdf8"
+                stroke="#73ADC0"
                 strokeWidth="2.2"
                 strokeLinecap="round"
               />
